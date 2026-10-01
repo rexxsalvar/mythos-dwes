@@ -1,0 +1,22 @@
+# Material temporal y comprobaciones de documentos
+/tmp/
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
+Thumbs.db
+
+# Dependencias y secretos de la futura aplicación Laravel
+/vendor/
+/node_modules/
+/.env
+/.env.*
+!/.env.example
+/auth.json
+/storage/*.key
+/public/hot
+/public/build/
+/coverage/
+/.phpunit.cache/
+/.phpunit.result.cache
+
