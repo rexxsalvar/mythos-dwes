@@ -40,4 +40,3 @@ python scripts/build_proposal.py
 ```
 
 Los archivos temporales quedan excluidos del repositorio. El PDF generado sí se versiona como entregable.
-

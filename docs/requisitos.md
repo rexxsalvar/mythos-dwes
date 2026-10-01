@@ -49,4 +49,3 @@ Después de los mínimos se priorizan diploma (HU-14), bonos regalo (HU-15) y Ex
 - Criterios de diploma y penalización de pistas.
 
 Estas decisiones se resolverán antes de implementar sus reglas. No impiden entregar una propuesta inicial orientativa.
-

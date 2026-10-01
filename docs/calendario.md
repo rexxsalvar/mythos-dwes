@@ -17,4 +17,3 @@ Calendario facilitado por el profesor. Las fechas son las oficiales; la distribu
 | Final | 08/02/2027 - 12/02/2027 | Integración, demo, defensa y entrega | T-12 |
 
 Los sprints 7 y 8 coinciden con vacaciones de Navidad: se priorizarán los mínimos. La semana final se conserva con las fechas indicadas por el profesor; el intervalo de lunes a viernes contiene cinco días, aunque la introducción del calendario lo describa como cuatro.
-

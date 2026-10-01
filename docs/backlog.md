@@ -154,4 +154,3 @@ Cada historia se descompondrá en tareas de desarrollo al planificar su sprint. 
 ## Definición de terminado
 
 Una tarjeta pasa a **Hecho** cuando cumple sus criterios, tiene evidencia (archivo, commit o resultado verificable) y no presenta defectos pendientes que impidan su uso. Para código se ejecutan las pruebas relevantes; para documentación se revisan contenido, enlaces y formato. Preparar la documentación no equivale a implementar las funciones que describe.
-

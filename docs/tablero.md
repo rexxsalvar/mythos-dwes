@@ -6,9 +6,13 @@ Este tablero local permite seguir el trabajo hasta disponer de GitHub Projects. 
 
 | Backlog | Por hacer (S1) | En curso | En revisión | Bloqueado | Hecho |
 |---|---|---|---|---|---|
-| HU-01 a HU-16; T-07 a T-12 | — | T-03 · Primer commit | T-02 · Verificación del PDF | T-06 · Publicar en GitHub y Projects | T-01 · Tema y alcance |
+| HU-01 a HU-16; T-07 a T-12 | — | — | — | T-06 · Publicar en GitHub y Projects | T-01 · Tema y alcance |
+| | | | | | T-02 · Propuesta revisada |
+| | | | | | T-03 · Git local y primer commit |
 | | | | | | T-04 · Backlog inicial |
 | | | | | | T-05 · Tablero local |
+
+Evidencia local: commit inicial `de164c4`, PDF de cuatro páginas revisado visualmente, 16 historias y 12 tareas con criterios de aceptación, enlaces locales comprobados. El trabajo futuro está planificado, no implementado.
 
 ## Reglas de uso
 
@@ -24,4 +28,3 @@ Al comenzar un sprint se seleccionan tarjetas, se refinan criterios y se anotan 
 ## Bloqueo actual
 
 T-06: el navegador denegó acceso a GitHub. No hay repositorio remoto, enlace de Projects ni tarjetas remotas creadas. Siguiente acción: habilitar el acceso y realizar la publicación prevista en [GitHub](github.md).
-
