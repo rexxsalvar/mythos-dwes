@@ -13,7 +13,7 @@ Esta entrega contiene la propuesta, el Product Backlog y la configuración del t
 | Tablero, estados y objetivo de sprint | [Tablero Scrum](docs/tablero.md) |
 | Mínimos docentes y aplicación a Mythos | [Requisitos](docs/requisitos.md) |
 | Fechas y objetivos de los sprints | [Calendario](docs/calendario.md) |
-| Publicación pendiente en GitHub | [Configuración de GitHub](docs/github.md) |
+| Repositorio y Projects | [Configuración de GitHub](docs/github.md) |
 
 ## Alcance
 
@@ -26,8 +26,10 @@ El mínimo docente de dos roles se cubrirá con cliente y administrador. La prop
 ## Estado y trabajo pendiente
 
 - Propuesta, backlog, calendario y tablero local preparados.
-- Repositorio Git local, rama `main`.
-- Pendiente: publicar el repositorio privado y crear GitHub Projects. El acceso del navegador a GitHub fue denegado; no se ha creado ningún recurso remoto.
+- Repositorio privado publicado: [rexxsalvar/mythos-dwes](https://github.com/rexxsalvar/mythos-dwes), rama `main`.
+- Tablero privado vinculado al repositorio: [Mythos - Proyecto DWES](https://github.com/users/rexxsalvar/projects/1).
+- Vista de tabla: [Product Backlog](https://github.com/users/rexxsalvar/projects/1/views/2), con campos Prioridad y Sprint previsto.
+- Pendiente de cierre de T-06: subir esta actualización documental y comprobar el estado final de las tarjetas.
 - Entrega oficial: **12/02/2027**. La subida a la plataforma docente y la defensa corresponden al alumno.
 
 ## Reproducir el PDF

@@ -1,32 +1,29 @@
 # Publicación en GitHub
 
-Destino solicitado por el usuario: **repositorio privado y GitHub Projects**. Estado: pendiente, por permiso denegado al acceder a GitHub desde el navegador. No se han utilizado otras vías para eludir ese bloqueo.
+Destino solicitado por el usuario: **repositorio privado y GitHub Projects**. La publicación inicial y la vinculación del tablero se han confirmado mediante las capturas del usuario. Última actualización: 04/10/2026.
 
-## Configuración preparada
+## Configuración realizada
 
-- Nombre propuesto del repositorio: `mythos-dwes`.
+- Repositorio: [rexxsalvar/mythos-dwes](https://github.com/rexxsalvar/mythos-dwes).
 - Visibilidad: **privado**.
 - Rama: `main`.
 - Descripción: «Proyecto DWES: reservas y gestión de escape rooms para Mythos».
-- Propietario: cuenta de GitHub que el usuario habilite. No se ha supuesto ninguna cuenta ni organización.
-- Nombre propuesto de Projects: `Mythos - Proyecto DWES`.
+- Propietario: `rexxsalvar`.
+- Projects: [Mythos - Proyecto DWES](https://github.com/users/rexxsalvar/projects/1).
 - Acceso del proyecto: privado.
 
-## Tablero Projects previsto
+## Tablero Projects
 
 Vista Board agrupada por Status: **Backlog, Por hacer, En curso, En revisión, Bloqueado, Hecho**.
 
-Campos: **ID**, **Tipo** (Historia/Tarea), **Prioridad** (P1/P2/P3), **Sprint previsto** (1 a 10 / Final) y **Status**. Se conservarán los identificadores HU/T del backlog en los títulos. El calendario está en `calendario.md`.
+Campos configurados: **Prioridad** (P1/P2/P3), **Sprint previsto** (1 a 10 / Final) y **Status**. Los identificadores HU/T figuran en los títulos; no requieren un campo adicional. El calendario está en `calendario.md`.
 
-Vistas adicionales: **Sprint actual** (Sprint previsto = 1) y **Product Backlog** (todos los elementos, ordenados por prioridad y sprint).
+Vistas: tablero Board y [Product Backlog](https://github.com/users/rexxsalvar/projects/1/views/2) en formato tabla. El usuario ha comunicado la incorporación de las 16 historias y 12 tareas, y la asignación de prioridades y sprints. La vista Sprint actual puede añadirse más adelante; no es un requisito del sprint 1.
 
 ## Pasos pendientes
 
-1. Crear el repositorio privado en la cuenta autorizada, sin añadir otro README inicial.
-2. Añadir el remoto `origin` verificado y publicar la rama `main`.
-3. Crear Projects y configurar estados, campos y vistas.
-4. Crear una issue por cada elemento del backlog con criterios de aceptación y añadirla al proyecto.
-5. Tras verificar las evidencias, mover T-01 a T-06 a Hecho; mantener el trabajo posterior en Backlog.
-6. Guardar los enlaces reales en README, comprobar la privacidad de ambos recursos y reflejar el estado remoto en `tablero.md`.
+1. Publicar la actualización documental con los enlaces reales y el estado actual.
+2. Comprobar las 28 tarjetas: 22 en Backlog, T-01 a T-05 en Hecho y T-06 en En curso hasta finalizar la publicación documental.
+3. Una vez comprobados los criterios de T-06, marcar sus casillas pendientes, moverla a Hecho y cerrar su issue. El trabajo futuro permanece en Backlog.
 
-No se han inventado enlaces ni se considera completada la publicación. El acceso o invitación del profesor se decidirá después; no se añaden colaboradores automáticamente.
+La herramienta de navegador del asistente sigue denegando el acceso a GitHub; las operaciones remotas las ha realizado el usuario, sin eludir ese bloqueo. El acceso o invitación del profesor se decidirá después; no se añaden colaboradores automáticamente.
