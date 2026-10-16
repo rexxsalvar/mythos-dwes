@@ -1,6 +1,6 @@
 # Product Backlog inicial
 
-Versión 1 · 01/10/2026. Estado actual de cada elemento: [tablero](tablero.md). P1 = necesario para mínimos o núcleo; P2 = complemento del producto; P3 = ampliación opcional. El sprint es una previsión, no un compromiso cerrado de todos los detalles.
+Versión revisada · 16/10/2026. T-07 y HU-10 se refinan por el nuevo enunciado docente; no cambian las fechas oficiales. Estado actual de cada elemento: [tablero](tablero.md). P1 = necesario para mínimos o núcleo; P2 = complemento del producto; P3 = ampliación opcional. El sprint es una previsión, no un compromiso cerrado de todos los detalles.
 
 Cada historia se descompondrá en tareas de desarrollo al planificar su sprint. Los criterios de aceptación siguientes permiten comprobar su resultado sin imponer todavía el diseño completo.
 
@@ -92,7 +92,7 @@ Cada historia se descompondrá en tareas de desarrollo al planificar su sprint. 
 
 **P1 · Sprint 6 · Depende de HU-04, HU-05.** Como usuario de un cliente externo, quiero consultar experiencias y gestionar reservas mediante la API.
 
-- Tres modelos: Experience y Reservation con dos CRUD completos, y GameSession con consulta de disponibilidad.
+- Al menos siete modelos, según el enunciado docente de S2: Experience y Reservation con dos CRUD completos; GameSession, Room, Team, Incident y MaintenanceAction con consultas autorizadas. Modelos preparados en S2; endpoints en S6.
 - Reservas autenticadas con Sanctum; escritura administrativa protegida también en experiencias. Se aplican las mismas reglas que en la web.
 - Borrador de documentación con peticiones, respuestas, errores y autenticación; bajas/cancelaciones documentadas.
 
@@ -144,7 +144,7 @@ Cada historia se descompondrá en tareas de desarrollo al planificar su sprint. 
 
 | ID | Prioridad / sprint | Trabajo | Criterio de aceptación |
 |---|---|---|---|
-| T-07 | P1 / 2 | E-R, migraciones, factories y seeders | Diagrama con 1:N y N:N; pivote con datos propios; claves y restricciones; carga de datos de prueba reproducible. |
+| T-07 | P1 / 2 | E-R, migraciones, factories y seeders | Diagrama E-R justificado con 1:N y N:N; al menos siete modelos para API; pivote con datos propios manejado desde código; migraciones, claves, restricciones e índices; factories realistas; seeders reproducibles; pruebas iniciales de modelos y relaciones; reconstrucción y demostración desde cero. Véanse [enunciado S2](sprint-2-enunciado.md) y [modelo](modelo-datos.md). |
 | T-08 | P1 / 4 | Validación y componentes | FormRequest en formularios de más de dos campos; componentes Blade de input, fechas, select, labels y checkbox utilizados en pantallas reales. |
 | T-09 | P1 / 7 | Tres comandos Artisan | Caducar reservas, preparar recordatorios y generar informe; el último se llama también desde código autorizado. Comandos verificables sin efectos duplicados. |
 | T-10 | P1 / 9 | Pest y correcciones | Cobertura mínima del 85 % del código de aplicación; pruebas de permisos, aforo, concurrencia, cancelaciones, bloqueos y documentos; errores corregidos. |

@@ -6,7 +6,7 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# Dependencias y secretos de la futura aplicación Laravel
+# Dependencias y secretos de la aplicación Laravel
 /vendor/
 /node_modules/
 /.env
@@ -19,3 +19,16 @@ Thumbs.db
 /coverage/
 /.phpunit.cache/
 /.phpunit.result.cache
+
+# Laravel
+/database/*.sqlite*
+/bootstrap/cache/*.php
+/.phpactor.json
+/.phpunit-watcher.yml
+/.idea/
+/.vscode/
+/.fleet/
+/.nova/
+/.herd/
+/npm-debug.log
+/.pest/

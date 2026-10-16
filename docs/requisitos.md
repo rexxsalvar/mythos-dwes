@@ -1,6 +1,6 @@
 # Requisitos y alcance
 
-Referencia: calendario de sprints facilitado por el profesor. Estos requisitos están **planificados**, no implementados. Fecha de revisión: 01/10/2026.
+Referencia: calendario de sprints facilitado por el profesor. Revisión: 16/10/2026. El sprint 2 implementa el modelo de datos y sus pruebas; las funciones posteriores siguen planificadas. El nuevo enunciado del profesor prevalece sobre la previsión inicial: [enunciado S2](sprint-2-enunciado.md) y [modelo implementado](modelo-datos.md).
 
 ## Mínimos docentes
 
@@ -8,7 +8,7 @@ Referencia: calendario de sprints facilitado por el profesor. Estos requisitos e
 |---|---|---|---|
 | Propuesta, Git, tablero y backlog | Documentación y organización inicial | 1 | T-01 a T-06 |
 | Diagrama E-R con 1:N y N:N y pivote con columnas propias | Usuarios-reservas; equipos-usuarios con función y fecha de incorporación | 2 | T-07 |
-| Migraciones, factories y seeders | Modelo completo y datos de prueba realistas | 2 | T-07 |
+| Migraciones, factories y seeders; al menos siete modelos para la API y pruebas iniciales | Modelo, restricciones, índices, relaciones desde código y carga reproducible | 2 | T-07 |
 | Autenticación y rutas públicas/privadas | Catálogo público y área de cliente/personal | 3 | HU-01 |
 | Dos roles con Laravel-permission | Cliente y administrador; otros perfiles previstos para la operativa | 3 | HU-01 |
 | Primera Policy con contenido real | ReservationPolicy: propiedad, acción y estado | 3 | HU-01, HU-05 |
@@ -19,7 +19,7 @@ Referencia: calendario de sprints facilitado por el profesor. Estos requisitos e
 | Tres clases Livewire, dos CRUD completos | Experiencias, reservas y agenda filtrable | 5 | HU-06 |
 | Segunda Policy con contenido real | GameSessionPolicy: asignación al game master y estado | 5 | HU-08 |
 | Tres scopes; dos complejos | Reservas futuras; disponibilidad con reservas/bloqueos; incidencias por sala, gravedad y estado | 5 | HU-04, HU-06, HU-09 |
-| API de tres modelos con dos CRUD completos | Experience y Reservation: CRUD; GameSession: consultas | 6 | HU-10 |
+| API de al menos siete modelos con dos CRUD completos | Experience y Reservation: CRUD; GameSession, Room, Team, Incident y MaintenanceAction: consultas autorizadas | 6 | HU-10 |
 | Un CRUD autenticado | Reservas con Sanctum; escritura del catálogo también protegida | 6 | HU-10 |
 | Documentación funcional de API | Peticiones, respuestas, errores y autenticación | 6 y 10 | HU-10, T-11 |
 | Tres comandos; uno llamado desde código | Caducar reservas, preparar recordatorios y generar informe desde administración | 7 | T-09 |

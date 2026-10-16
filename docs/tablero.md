@@ -1,18 +1,19 @@
 # Tablero Scrum - Mythos
 
-Sprint activo: **1 · 21/09/2026 - 04/10/2026**. Objetivo: dejar definida y organizada la propuesta antes del diseño de base de datos.
+Sprint activo: **2 · 05/10/2026 - 18/10/2026**. Objetivo: construir y comprobar el modelo de datos de Mythos conforme al enunciado actualizado.
 
-Seguimiento en [GitHub Projects](https://github.com/users/rexxsalvar/projects/1), privado y vinculado a [mythos-dwes](https://github.com/rexxsalvar/mythos-dwes). Esta instantánea local se actualiza el 04/10/2026. Los identificadores y criterios se mantienen en el [Product Backlog](backlog.md). Los elementos posteriores permanecen en Backlog aunque tengan un sprint previsto.
+Seguimiento en [GitHub Projects](https://github.com/users/rexxsalvar/projects/1), público y vinculado a [mythos-dwes](https://github.com/rexxsalvar/mythos-dwes). Revisión: 16/10/2026. Los identificadores y criterios se mantienen en el [Product Backlog](backlog.md). Los elementos posteriores permanecen en Backlog aunque sus modelos de datos se preparen en S2.
 
-| Backlog | Por hacer (S1) | En curso | En revisión | Bloqueado | Hecho |
+| Backlog | Por hacer (S2) | En curso | En revisión | Bloqueado | Hecho |
 |---|---|---|---|---|---|
-| HU-01 a HU-16; T-07 a T-12 | — | T-06 · Cierre de publicación y Projects | — | — | T-01 · Tema y alcance |
+| HU-01 a HU-16; T-08 a T-12 | — | — | T-07 · Implementación comprobada; cerrar tras publicación y evidencia remota | — | T-01 · Tema y alcance |
 | | | | | | T-02 · Propuesta revisada |
 | | | | | | T-03 · Git local y primer commit |
 | | | | | | T-04 · Backlog inicial |
 | | | | | | T-05 · Tablero local |
+| | | | | | T-06 · Publicación y Projects |
 
-Evidencia local: commit inicial `de164c4`, PDF de cuatro páginas revisado visualmente, 16 historias y 12 tareas con criterios de aceptación, enlaces locales comprobados. El trabajo futuro está planificado, no implementado.
+Evidencia S1: commits `de164c4`, `627fcb4`, `3f5cda7`, propuesta de cuatro páginas y tablero. Evidencia S2: [verificación](sprint-2-verificacion.md), [modelo](modelo-datos.md), migraciones, factories, seeders y pruebas. La estructura de datos no completa las historias funcionales futuras.
 
 ## Reglas de uso
 
@@ -25,6 +26,6 @@ Evidencia local: commit inicial `de164c4`, PDF de cuatro páginas revisado visua
 
 Al comenzar un sprint se seleccionan tarjetas, se refinan criterios y se anotan tareas. En la revisión se comprueban los resultados; en la retrospectiva se registra qué mejorar para el siguiente sprint. Las ampliaciones se incorporan cuando los mínimos y la capacidad lo permitan.
 
-## Cierre pendiente
+## Seguimiento del cierre
 
-T-06: el repositorio está publicado y el tablero privado está vinculado. El usuario ha comunicado la creación de las tarjetas y la asignación de prioridad y sprint. Queda publicar esta actualización documental, comprobar la distribución final y mover T-06 a Hecho al cumplir sus criterios. Véanse los pasos de [GitHub](github.md).
+T-06 está en Hecho. El issue de T-07 figuraba cerrado sin implementación: se ha reabierto y refinado con el nuevo enunciado. Tras publicar este trabajo y comprobar su evidencia, se cierra el issue y se mueve a Hecho en Projects; ese estado vivo prevalece sobre esta instantánea previa a publicación. El resto permanece en Backlog. No se ha enviado nada a Moodle.
