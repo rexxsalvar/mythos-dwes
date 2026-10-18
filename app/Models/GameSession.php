@@ -13,11 +13,11 @@ class GameSession extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['experience_id', 'room_id', 'game_master_id', 'starts_at', 'ends_at', 'status', 'preparation_minutes'];
+    protected $fillable = ['room_experience_id', 'booking_policy_version_id', 'preparation_template_id', 'locale', 'actual_started_at', 'actual_ended_at', 'experience_id', 'room_id', 'game_master_id', 'starts_at', 'ends_at', 'status', 'preparation_minutes'];
 
     protected function casts(): array
     {
-        return [
+        return ['actual_started_at' => 'immutable_datetime', 'actual_ended_at' => 'immutable_datetime',
             'starts_at' => 'immutable_datetime',
             'ends_at' => 'immutable_datetime',
         ];
@@ -62,5 +62,20 @@ class GameSession extends Model
     {
         return $this->belongsToMany(Hint::class)->using(HintUsage::class)
             ->withPivot(['used_at', 'penalty_seconds'])->withTimestamps();
+    }
+
+    public function installation(): BelongsTo
+    {
+        return $this->belongsTo(RoomInstallation::class, 'room_experience_id');
+    }
+
+    public function bookingPolicyVersion(): BelongsTo
+    {
+        return $this->belongsTo(BookingPolicyVersion::class);
+    }
+
+    public function preparationTemplate(): BelongsTo
+    {
+        return $this->belongsTo(PreparationTemplate::class);
     }
 }

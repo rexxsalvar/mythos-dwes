@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Incident extends Model
@@ -43,5 +44,26 @@ class Incident extends Model
     public function maintenanceActions(): HasMany
     {
         return $this->hasMany(MaintenanceAction::class);
+    }
+
+    public function availabilityBlocks(): HasMany
+    {
+        return $this->hasMany(AvailabilityBlock::class);
+    }
+
+    public function reservationImpacts(): HasMany
+    {
+        return $this->hasMany(IncidentImpact::class);
+    }
+
+    public function notifications(): HasMany
+    {
+        return $this->hasMany(NotificationDelivery::class);
+    }
+
+    public function reservations(): BelongsToMany
+    {
+        return $this->belongsToMany(Reservation::class, 'reservation_incident')->using(IncidentImpact::class)
+            ->withPivot(['id', 'detected_at', 'status', 'reviewed_by', 'reviewed_at', 'resolution_note'])->withTimestamps();
     }
 }

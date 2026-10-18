@@ -7,11 +7,14 @@ use App\Models\GameResult;
 use App\Models\GameSession;
 use App\Models\Hint;
 use App\Models\Incident;
+use App\Models\Location;
 use App\Models\MaintenanceAction;
 use App\Models\PreparationCheck;
 use App\Models\Rate;
+use App\Models\RatePlan;
 use App\Models\Reservation;
 use App\Models\Room;
+use App\Models\RoomInstallation;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -35,15 +38,24 @@ class MythosDemoSeeder extends Seeder
                 'name' => 'Expedición Maldita', 'description' => 'Aventura de temática egipcia. Referencia del análisis de septiembre de 2026.',
                 'duration_minutes' => 75, 'min_players' => 2, 'max_players' => 6, 'is_active' => true,
             ]);
+            $plan = RatePlan::where('experience_id', $experience->id)->where('currency', 'EUR')->where('status', 'active')->orderBy('id')->first()
+                ?? RatePlan::firstOrCreate(['experience_id' => $experience->id, 'code' => 'demo-standard'], [
+                    'name' => 'Tarifas de referencia septiembre 2026', 'currency' => 'EUR', 'valid_from' => '2026-09-01 00:00:00', 'status' => 'active',
+                ]);
             foreach ([2 => 8000, 3 => 9000, 4 => 10000, 5 => 11000, 6 => 13200] as $players => $cents) {
-                Rate::updateOrCreate(['experience_id' => $experience->id, 'players' => $players], ['total_cents' => $cents, 'currency' => 'EUR']);
+                Rate::updateOrCreate(['experience_id' => $experience->id, 'players' => $players], ['rate_plan_id' => $plan->id, 'total_cents' => $cents, 'currency' => 'EUR']);
             }
+            $location = Location::firstOrCreate(['code' => 'mythos-demo'], ['name' => 'Local Mythos de demostración', 'city' => 'Murcia', 'address' => 'Dirección ficticia de pruebas']);
             $room = Room::updateOrCreate(['name' => 'Sala demo Expedición Maldita'], [
-                'experience_id' => $experience->id, 'location' => 'El Palmar, Murcia (referencia; sala de demostración)', 'capacity' => 6, 'status' => 'operational',
+                'experience_id' => $experience->id, 'location_id' => $location->id, 'location' => 'El Palmar, Murcia (referencia; sala de demostración)', 'capacity' => 6, 'status' => 'operational',
             ]);
             $maintenanceRoom = Room::updateOrCreate(['name' => 'Sala técnica ficticia'], [
-                'experience_id' => $experience->id, 'location' => 'Ubicación ficticia de pruebas', 'capacity' => 6, 'status' => 'maintenance',
+                'experience_id' => $experience->id, 'location_id' => $location->id, 'location' => 'Ubicación ficticia de pruebas', 'capacity' => 6, 'status' => 'maintenance',
             ]);
+            foreach ([$room, $maintenanceRoom] as $installedRoom) {
+                RoomInstallation::firstOrCreate(['room_id' => $installedRoom->id, 'experience_id' => $experience->id, 'installed_from' => '1970-01-01 00:00:00']);
+            }
+            $installation = RoomInstallation::where('room_id', $room->id)->firstOrFail();
             $team = Team::updateOrCreate(['owner_id' => $users['cliente']->id, 'name' => 'Los Escarabajos Demo']);
             $team->users()->syncWithoutDetaching([
                 $users['cliente']->id => ['role' => 'captain', 'joined_at' => '2026-10-01 10:00:00'],
@@ -56,6 +68,7 @@ class MythosDemoSeeder extends Seeder
                     'room_id' => $room->id, 'starts_at' => "2026-10-$day 17:00:00",
                 ], [
                     'experience_id' => $experience->id, 'game_master_id' => $users['master']->id,
+                    'room_experience_id' => $installation->id,
                     'ends_at' => "2026-10-$day 18:15:00", 'preparation_minutes' => null,
                     'status' => $status === 'completed' ? 'completed' : 'scheduled',
                 ]);

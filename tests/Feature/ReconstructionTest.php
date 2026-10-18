@@ -29,7 +29,8 @@ test('two independent SQLite writers cannot commit competing active reservations
         $user = $db->table('users')->insertGetId(['name' => 'Demo', 'email' => 'race@example.test', 'password' => 'not-a-login']);
         $experience = $db->table('experiences')->insertGetId(['name' => 'Demo', 'slug' => 'race', 'description' => 'Test', 'duration_minutes' => 75, 'min_players' => 2, 'max_players' => 6]);
         $room = $db->table('rooms')->insertGetId(['experience_id' => $experience, 'name' => 'Demo', 'location' => 'Ficticia', 'capacity' => 6, 'status' => 'operational']);
-        $session = $db->table('game_sessions')->insertGetId(['experience_id' => $experience, 'room_id' => $room, 'game_master_id' => $user, 'starts_at' => '2026-10-17 10:00:00', 'ends_at' => '2026-10-17 11:15:00', 'status' => 'scheduled']);
+        $installation = $db->table('room_experience')->insertGetId(['room_id' => $room, 'experience_id' => $experience, 'installed_from' => '2026-01-01 00:00:00']);
+        $session = $db->table('game_sessions')->insertGetId(['room_experience_id' => $installation, 'experience_id' => $experience, 'room_id' => $room, 'game_master_id' => $user, 'starts_at' => '2026-10-17 10:00:00', 'ends_at' => '2026-10-17 11:15:00', 'status' => 'scheduled']);
         $first = new PDO('sqlite:'.$path, options: [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
         $second = new PDO('sqlite:'.$path, options: [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
         foreach ([$first, $second] as $writer) {

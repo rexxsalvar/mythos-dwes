@@ -1,6 +1,6 @@
 # Requisitos y alcance
 
-Referencia: calendario de sprints facilitado por el profesor. Revisión: 16/10/2026. El sprint 2 implementa el modelo de datos y sus pruebas; las funciones posteriores siguen planificadas. El nuevo enunciado del profesor prevalece sobre la previsión inicial: [enunciado S2](sprint-2-enunciado.md) y [modelo implementado](modelo-datos.md).
+Referencia: calendario de sprints facilitado por el profesor. Revisión: 18/10/2026. El sprint 2 implementa la estructura completa prevista del producto y conserva las pruebas iniciales anteriores; las funciones posteriores siguen planificadas. El nuevo enunciado del profesor prevalece sobre la previsión inicial: [enunciado S2](sprint-2-enunciado.md) y [modelo implementado](modelo-datos.md).
 
 ## Mínimos docentes
 
@@ -8,7 +8,7 @@ Referencia: calendario de sprints facilitado por el profesor. Revisión: 16/10/2
 |---|---|---|---|
 | Propuesta, Git, tablero y backlog | Documentación y organización inicial | 1 | T-01 a T-06 |
 | Diagrama E-R con 1:N y N:N y pivote con columnas propias | Usuarios-reservas; equipos-usuarios con función y fecha de incorporación | 2 | T-07 |
-| Migraciones, factories y seeders; al menos siete modelos para la API y pruebas iniciales | Modelo, restricciones, índices, relaciones desde código y carga reproducible | 2 | T-07 |
+| Migraciones, factories y seeders; al menos siete modelos para la API y pruebas iniciales | Modelo completo de 32 tablas de negocio, restricciones, índices, relaciones desde código y carga reproducible | 2 | T-07 |
 | Autenticación y rutas públicas/privadas | Catálogo público y área de cliente/personal | 3 | HU-01 |
 | Dos roles con Laravel-permission | Cliente y administrador; otros perfiles previstos para la operativa | 3 | HU-01 |
 | Primera Policy con contenido real | ReservationPolicy: propiedad, acción y estado | 3 | HU-01, HU-05 |
@@ -48,4 +48,4 @@ Después de los mínimos se priorizan diploma (HU-14), bonos regalo (HU-15) y Ex
 - Experiencias y ubicaciones iniciales; condiciones de confirmación y cobros manuales.
 - Criterios de diploma y penalización de pistas.
 
-Estas decisiones se resolverán antes de implementar sus reglas. No impiden entregar una propuesta inicial orientativa.
+Estas decisiones se resolverán antes de implementar sus reglas. El modelo completo guarda condiciones versionadas como borradores y no asigna valores inventados. Las estructuras de bonos y valoraciones se preparan ahora; sus funciones siguen siendo ampliaciones posteriores. No impiden entregar una propuesta inicial orientativa.

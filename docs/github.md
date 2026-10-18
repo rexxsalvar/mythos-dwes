@@ -1,6 +1,6 @@
 # Publicación en GitHub
 
-Repositorio y GitHub Projects existentes, creados inicialmente privados y hechos públicos posteriormente por indicación del alumno. Visibilidad comprobada en la revisión del 06/10/2026. Última actualización documental: 16/10/2026.
+Repositorio y GitHub Projects existentes, creados inicialmente privados y hechos públicos posteriormente por indicación del alumno. Visibilidad comprobada en la revisión del 06/10/2026. Última actualización documental: 18/10/2026.
 
 ## Configuración realizada
 
@@ -22,7 +22,7 @@ Vistas: tablero Board y [Product Backlog](https://github.com/users/rexxsalvar/pr
 
 ## Evidencia y seguimiento
 
-T-01 a T-06 están en Hecho y sus issues cerrados. T-07 se reabre para corregir un cierre anterior sin implementación y se refina con el enunciado del sprint 2. Su evidencia está en [verificación del sprint 2](sprint-2-verificacion.md); el cierre definitivo se registra en [issue #23](https://github.com/rexxsalvar/mythos-dwes/issues/23) con el commit publicado.
+T-01 a T-06 están en Hecho y sus issues cerrados. T-07 corrigió su cierre inicial y se completó con el commit `4a5b05b`. El 18/10 se amplía de nuevo su modelo por indicación del alumno, con 32 tablas de negocio; la estructura de todo el producto queda distinguida de las funciones pendientes. Su evidencia está en [verificación del sprint 2](sprint-2-verificacion.md); el cierre definitivo se registra en [issue #23](https://github.com/rexxsalvar/mythos-dwes/issues/23) con el commit publicado.
 
 Los 21 elementos posteriores (HU-01 a HU-16 y T-08 a T-12) permanecen en Backlog. Los endpoints de HU-10 no están implementados: su previsión se amplía a siete modelos por el nuevo requisito del profesor, manteniendo dos CRUD completos.
 

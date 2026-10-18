@@ -10,7 +10,7 @@ class PreparationCheck extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['game_session_id', 'checked_by', 'label', 'is_required', 'passed', 'checked_at'];
+    protected $fillable = ['preparation_template_item_id', 'game_session_id', 'checked_by', 'label', 'is_required', 'passed', 'checked_at'];
 
     protected function casts(): array
     {
@@ -29,5 +29,10 @@ class PreparationCheck extends Model
     public function checker(): BelongsTo
     {
         return $this->belongsTo(User::class, 'checked_by');
+    }
+
+    public function templateItem(): BelongsTo
+    {
+        return $this->belongsTo(PreparationTemplateItem::class, 'preparation_template_item_id');
     }
 }

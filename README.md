@@ -2,9 +2,9 @@
 
 Aplicación de reservas y gestión para el negocio de escape rooms Mythos, en Murcia. Proyecto individual del grado de Desarrollo de Aplicaciones Web.
 
-## Estado · 16/10/2026
+## Estado · 18/10/2026
 
-Sprint 1 completado: propuesta, Product Backlog y tablero. Sprint 2: base Laravel 13 con SQLite, modelo de datos, migraciones, factories, seeders y pruebas iniciales. Las pantallas de negocio, autenticación, roles y API siguen previstas para sus sprints.
+Sprint 1 completado: propuesta, Product Backlog y tablero. Sprint 2: base Laravel 13 con SQLite y modelo de datos completo previsto para Mythos: 32 tablas de negocio (29 de núcleo y 3 de ampliaciones previstas), más las tablas de permisos, tokens e infraestructura. Migraciones, factories y seeders actualizados; se conservan las pruebas iniciales anteriores. Las pantallas de negocio, autenticación, roles y API siguen previstas para sus sprints.
 
 | Entregable | Archivo |
 |---|---|
@@ -15,7 +15,9 @@ Sprint 1 completado: propuesta, Product Backlog y tablero. Sprint 2: base Larave
 | Fechas y objetivos de los sprints | [Calendario](docs/calendario.md) |
 | Repositorio y Projects | [Configuración de GitHub](docs/github.md) |
 | Enunciado actualizado del profesor | [Sprint 2](docs/sprint-2-enunciado.md) |
-| Diagrama E-R, entidades, índices y siete modelos API | [Modelo de datos](docs/modelo-datos.md) |
+| Modelo completo y diagramas E-R por áreas | [Modelo de datos](docs/modelo-datos.md) |
+| Todas las columnas, claves e índices | [Diccionario](docs/diccionario-datos.md) |
+| Estructura SQLite exportada, sin datos | [Esquema SQL](docs/base-datos.sql) |
 | Comprobaciones y demostración de la entrega | [Evidencia del sprint 2](docs/sprint-2-verificacion.md) |
 
 ## Ejecutar y comprobar el sprint 2
@@ -27,7 +29,7 @@ En una copia recién clonada:
 ```powershell
 composer run setup
 php artisan db:seed
-composer test
+php scripts/database_overview.php
 php scripts/demo_relationships.php
 ```
 
@@ -35,13 +37,13 @@ php scripts/demo_relationships.php
 
 Para iniciar el servidor local: `php artisan serve`. La página inicial es todavía la del esqueleto Laravel; el entregable de este sprint es el modelo de datos, no una interfaz funcional de reservas.
 
-La demostración muestra desde Eloquent tarifas, reservas de un usuario, miembros y atributos del pivote, pistas utilizadas, preparación, resultado y actuaciones de mantenimiento. Las pruebas verifican además INSERT/UPDATE de pivotes, restricciones, reversión y dos escritores independientes.
+La demostración muestra relaciones desde Eloquent. `database_overview.php` permite ver las 46 tablas totales, columnas y recuentos sin modificar datos. Las 43 pruebas iniciales se conservan y pueden ejecutarse con `composer test`; esta ampliación no incorpora pruebas automatizadas nuevas. Las funciones de los demás sprints siguen pendientes.
 
 ## Alcance
 
 Catálogo, reservas, sesiones, preparación de partidas, equipos, resultados e incidencias. Se utilizará Expedición Maldita como referencia real: 75 minutos y de 2 a 6 jugadores. Los plazos de cancelación y preparación se concretarán durante el análisis.
 
-Base instalada: Laravel 13, SQLite y Pest 4, con PHP 8.4. Tecnologías previstas para los siguientes sprints: Blade, Livewire, Laravel-permission, Sanctum y laravel-dompdf. Idiomas: español e inglés. La API pasa de tres a al menos siete modelos por el enunciado docente actualizado; los endpoints siguen previstos para S6.
+Base instalada: Laravel 13, SQLite y Pest 4, con PHP 8.4. Laravel-permission 8 y Sanctum 4 aportan sus tablas oficiales y relaciones de datos; autenticación, Policies y endpoints siguen pendientes. Livewire y laravel-dompdf se incorporarán en sus sprints. Idiomas: español e inglés. La API pasa de tres a al menos siete modelos por el enunciado docente actualizado; los endpoints siguen previstos para S6.
 
 El mínimo docente de dos roles se cubrirá con cliente y administrador. La propuesta contempla además recepción, game master y mantenimiento. Los mínimos técnicos y las ampliaciones se distinguen en [requisitos](docs/requisitos.md).
 
@@ -51,7 +53,7 @@ El mínimo docente de dos roles se cubrirá con cliente y administrador. La prop
 - Repositorio público: [rexxsalvar/mythos-dwes](https://github.com/rexxsalvar/mythos-dwes), rama `main`.
 - Tablero público vinculado al repositorio: [Mythos - Proyecto DWES](https://github.com/users/rexxsalvar/projects/1).
 - Vista de tabla: [Product Backlog](https://github.com/users/rexxsalvar/projects/1/views/2), con campos Prioridad y Sprint previsto.
-- T-01 a T-06 completadas. T-07 tiene implementación y evidencia en esta entrega; el resto del desarrollo permanece planificado.
+- T-01 a T-06 completadas. T-07 se amplía el 18/10/2026 para cerrar el modelo previsto para todo el producto. Las tablas de valoraciones y bonos no dan por completadas HU-14/HU-15; el resto del desarrollo permanece planificado.
 - Entrega oficial: **12/02/2027**. La subida a la plataforma docente y la defensa corresponden al alumno.
 
 ## Reproducir el PDF

@@ -29,6 +29,11 @@ echo json_encode([
         'code' => $hint->code, 'used_at' => $hint->pivot->used_at->toDateTimeString(), 'penalty_seconds' => $hint->pivot->penalty_seconds,
     ]),
     'preparation_checks' => $session->preparationChecks->count(),
+    'installation' => ['room' => $session->installation->room->name, 'experience' => $session->installation->experience->name],
+    'template_items' => $session->preparationTemplate?->items->pluck('label'),
+    'participants' => $session->result?->reservation?->participants->pluck('display_name'),
+    'payments_cents' => $session->result?->reservation?->payments->map(fn ($payment) => ['kind' => $payment->kind, 'amount_cents' => $payment->amount_cents]),
+    'translations' => $experience->translations->pluck('title', 'locale'),
     'result_1_to_1' => ['escaped' => $session->result->escaped, 'elapsed_seconds' => $session->result->elapsed_seconds],
     'maintenance_actions_1_to_n' => $incident->maintenanceActions->map(fn ($action) => ['description' => $action->description, 'technician' => $action->technician->email]),
 ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR).PHP_EOL;
