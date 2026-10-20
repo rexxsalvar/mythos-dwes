@@ -1,32 +1,27 @@
 # Tablero Scrum - Mythos
 
-Sprint activo: **2 · 05/10/2026 - 18/10/2026**. Objetivo: construir y comprobar el modelo de datos de Mythos conforme al enunciado actualizado.
+Fecha de revisión: 20/10/2026. Por calendario corresponde el **sprint 3, del 19/10 al 01/11**. La presente tarea revisa la planificación por las correcciones de S1; no inicia la implementación funcional de S3 ni mueve historias a Hecho.
 
-Seguimiento en [GitHub Projects](https://github.com/users/rexxsalvar/projects/1), público y vinculado a [mythos-dwes](https://github.com/rexxsalvar/mythos-dwes). Revisión: 18/10/2026. Los identificadores y criterios se mantienen en el [Product Backlog](backlog.md). Los elementos posteriores permanecen en Backlog aunque sus modelos de datos se preparen en S2.
+Tablero existente: [GitHub Projects](https://github.com/users/rexxsalvar/projects/1). Criterios: [backlog](backlog.md) y [revisión docente de S1](revision-sprint-1.md). Se mantienen 28 tarjetas sin duplicados y los estados existentes.
 
-| Backlog | Por hacer (S2) | En curso | En revisión | Bloqueado | Hecho |
+| Backlog | Por hacer | En curso | En revisión | Bloqueado | Hecho: evidencia histórica |
 |---|---|---|---|---|---|
-| HU-01 a HU-16; T-08 a T-12 | — | — | — | — | T-01 · Tema y alcance |
-| | | | | | T-02 · Propuesta revisada |
-| | | | | | T-03 · Git local y primer commit |
-| | | | | | T-04 · Backlog inicial |
-| | | | | | T-05 · Tablero local |
-| | | | | | T-06 · Publicación y Projects |
-| | | | | | T-07 · Modelo de datos completo, revisión del 18/10 |
+| HU-01 a HU-16; T-08 a T-12 | — | — | — | — | T-01 a T-06: entregables de S1 |
+| | | | | | T-07: modelo y comprobaciones de S2 del 18/10 |
 
-Evidencia S1: commits `de164c4`, `627fcb4`, `3f5cda7`, propuesta de cuatro páginas y tablero. Evidencia S2: [verificación](sprint-2-verificacion.md), [modelo](modelo-datos.md), migraciones, factories, seeders y pruebas. La estructura de datos no completa las historias funcionales futuras.
+La revisión de S1 actualiza los criterios de esas mismas tarjetas, no da por implementados sus contenidos. HU-14/HU-15/HU-16 siguen opcionales; el correo de resultado obligatorio pertenece a HU-11 y funciona sin diploma.
 
 ## Reglas de uso
 
-- **Backlog:** trabajo pendiente de un sprint futuro; se prioriza al planificarlo.
-- **Por hacer:** trabajo seleccionado para el sprint activo.
-- **En curso:** máximo una tarjeta en un proyecto individual.
-- **En revisión:** criterios y evidencia por comprobar; máximo dos tarjetas.
-- **Bloqueado:** registrar causa y siguiente acción; no marcar como hecho por tener una alternativa parcial.
-- **Hecho:** cumple la definición de terminado del backlog.
+- Backlog: pendiente de selección para desarrollo.
+- Por hacer: seleccionado para el sprint activo.
+- En curso: máximo una tarjeta en este proyecto individual.
+- En revisión: máximo dos tarjetas, con evidencia por comprobar.
+- Bloqueado: causa y siguiente acción registradas.
+- Hecho: criterios satisfechos; documentar una función no equivale a implementarla.
 
-Al comenzar un sprint se seleccionan tarjetas, se refinan criterios y se anotan tareas. En la revisión se comprueban los resultados; en la retrospectiva se registra qué mejorar para el siguiente sprint. Las ampliaciones se incorporan cuando los mínimos y la capacidad lo permitan.
+## Seguimiento
 
-## Seguimiento del cierre
+Las correcciones elevan el alcance a siete recursos API, cinco CRUD/policies, siete scopes/Livewire/comandos, cinco pares evento-listener/jobs/correos y tres informes complejos. Las fechas oficiales siguen en el [calendario](calendario.md). Antes de HU-09/HU-12 se aplicarán los dos ajustes de datos identificados en la revisión.
 
-T-01 a T-07 tienen evidencia de su trabajo. T-07 se amplía por indicación del alumno el 18/10 para cerrar el modelo completo del producto; el commit y su publicación se registran en el issue #23. El resto permanece en Backlog: preparar su estructura de datos no completa las historias funcionales. No se ha enviado nada a Moodle.
+La evidencia de S2 se conserva y no equivale a una calificación del profesor. No hay confirmación de entrega en Moodle ni de cambio del nombre en el registro externo del centro. El nombre de proyecto y enlaces de documentación y tarjetas se unifican como Mythos.

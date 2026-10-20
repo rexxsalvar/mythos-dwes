@@ -1,6 +1,6 @@
 # Evidencia del sprint 2 - T-07
 
-Revisión: 18/10/2026. Periodo oficial: 05/10/2026 a 18/10/2026 (23:59). La entrega inicial `4a5b05b` se amplía por indicación del alumno para cerrar la estructura del proyecto completo.
+Evidencia de implementación: 18/10/2026. Anotación de alcance: 20/10/2026. Periodo oficial: 05/10/2026 a 18/10/2026 (23:59). La entrega inicial `4a5b05b` se amplía por indicación del alumno para cerrar la estructura del proyecto completo.
 
 ## Correspondencia con el enunciado
 
@@ -8,7 +8,7 @@ Revisión: 18/10/2026. Periodo oficial: 05/10/2026 a 18/10/2026 (23:59). La entr
 |---|---|
 | Diagrama E-R cerrado y entidades justificadas | [Modelo completo](modelo-datos.md), [diagramas por áreas](diagramas/completo.md) y [diccionario](diccionario-datos.md): 32 tablas de negocio, distinguiendo núcleo y ampliaciones previstas. |
 | Migraciones, claves, restricciones e índices | Se mantiene la migración del 16/10 y se añade `2026_10_18_000001_complete_mythos_data_model.php`, junto con migraciones oficiales de permisos y Sanctum; [DDL completo](base-datos.sql). |
-| Al menos siete modelos que utilizará la API | Experience, Room, GameSession, Reservation, Team, Incident y MaintenanceAction, con relaciones Eloquent. API funcional pendiente de S6. |
+| Al menos siete modelos que utilizará la API | La selección de S2 del 18/10 se actualiza por la corrección de S1: User, Experience, Room, GameSession, Reservation, Rate e Incident; todos ya tienen modelo. Endpoints y cinco CRUD pendientes de S6. |
 | Factories realistas | Doce factories iniciales y dieciocho nuevas en `database/factories`, con referencias compatibles y personas ficticias. |
 | Seeders reproducibles | `MythosDemoSeeder` y `CompleteDataModelSeeder`: datos ficticios en todas las áreas. Los registros de mensajes/documentos/bonos no ejecutan esas funciones. |
 | Relaciones 1:N y N:N | `RelationshipsTest`: catálogo, reservas, personal, equipos, pistas e incidencias, con inversas. |
@@ -33,12 +33,16 @@ La suite existente se configura con SQLite en memoria y conexiones temporales pa
 
 ## Cómo reproducir la comprobación
 
-En una copia recién clonada: ejecutar los pasos de [README](../README.md). Para una base local demo ya preparada, `composer test` y `php scripts/demo_relationships.php` permiten revisar pruebas y relaciones.
+Para una base local demo ya preparada, `composer test` y `php scripts/demo_relationships.php` permiten revisar pruebas y relaciones.
 
 El workflow `.github/workflows/tests.yml` ejecuta Pest y Pint en GitHub Actions. Su resultado remoto se consulta en Actions; haber creado el workflow no demuestra por sí solo que la ejecución remota haya terminado correctamente.
 
 ## Límites de esta entrega
 
-No se considera implementada la ampliación A5 de borrado lógico. Se conserva histórico con estados y claves restrictivas. Laravel-permission y Sanctum aportan sus tablas, modelos y asociaciones demo; no se implementan flujos de autenticación, Policies o endpoints. Los CRUD, Livewire, gestión funcional de bloqueos, correos, PDFs, valoraciones y canjes se desarrollarán en sus historias. El objetivo de cobertura del 85 % pertenece a S9: estas pruebas iniciales no declaran completado ese objetivo.
+No se considera implementada la ampliación A5 de borrado lógico. Se conserva histórico con estados y claves restrictivas. Laravel-permission y Sanctum aportan sus tablas, modelos y asociaciones demo; no se implementan flujos de autenticación, Policies o endpoints. Los CRUD, Livewire, gestión funcional de bloqueos, correos, PDFs, valoraciones y canjes se desarrollarán en sus historias. El objetivo obligatorio de cobertura del 85 % se comprobará en S9: estas pruebas iniciales no declaran completado ese objetivo.
 
 Las decisiones de negocio pendientes siguen identificadas en [modelo de datos](modelo-datos.md). No se ha enviado la entrega a Moodle ni se ha realizado la defensa.
+
+## Revisión del alcance del 20/10
+
+El alumno comunica correcciones del profesor al sprint 1; todavía no comunica corrección ni calificación de S2. Se conserva esta evidencia histórica. Los nuevos informes diario y de mantenimiento requieren añadir tipos de documento y minutos de intervención antes de sus historias. Los 15 minutos de bloqueo y 30 de preparación aprobados son reglas académicas por implementar; esta revisión documental no ejecuta migraciones ni modifica la base local. Véase la [revisión de S1](revision-sprint-1.md).

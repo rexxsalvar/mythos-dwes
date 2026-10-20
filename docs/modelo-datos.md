@@ -1,7 +1,7 @@
 # Base de datos de Mythos - modelo completo
 
-Revisión: 18/10/2026. Laravel 13, PHP 8.4 y SQLite, manteniendo la elección del alumno.
-Esta revisión cierra la estructura prevista del proyecto completo dentro de S2. No adelanta pantallas, endpoints, Policies, correos, documentos ni canjes.
+Modelo implementado: 18/10/2026. Anotación de alcance: 20/10/2026. Laravel 13, PHP 8.4 y SQLite, manteniendo la elección del alumno.
+La revisión del 18/10 cerró la estructura entonces prevista dentro de S2. Las correcciones de S1 del 20/10 añaden los ajustes pendientes descritos al final. No adelanta pantallas, endpoints, Policies, correos, documentos ni canjes.
 
 ## Cómo estudiarla
 
@@ -103,13 +103,13 @@ El diccionario enumera índices y referencias; el SQL incluye los CHECK y trigge
 
 Se usan las migraciones y modelos oficiales de Laravel-permission 8 y Sanctum 4. Roles previstos y datos demo: cliente, administrador, recepción, game master y mantenimiento. Se crean sus registros y asociaciones de demostración, sin conceder permisos funcionales todavía ni emitir tokens.
 
-Los siete modelos exigidos para la API siguen siendo Experience, Reservation, GameSession, Room, Team, Incident y MaintenanceAction. La estructura adicional no obliga a exponer todas las tablas ni siete CRUD: los dos CRUD completos previstos se mantienen para S6.
+La corrección docente de S1 fija los siete recursos API: User, Experience, Room, GameSession, Reservation, Rate e Incident. Todos tienen modelo. Se planifican cinco CRUD (experiencias, salas, sesiones, reservas e incidencias) y User/Reservation/Incident autenticados; los endpoints siguen pendientes de S6. Team y MaintenanceAction mantienen su función interna.
 
 Referencias de los paquetes: [Spatie, instalación](https://spatie.be/docs/laravel-permission/v8/installation-laravel), [requisitos](https://spatie.be/docs/laravel-permission/v8/prerequisites), [Laravel Sanctum](https://github.com/laravel/docs/blob/13.x/sanctum.md).
 
 ## Decisiones pendientes, sin valores inventados
 
-Siguen pendientes los plazos de cancelación/caducidad/preparación, confirmación y cobro, inventario inicial real, criterio de diploma, penalizaciones de pistas y condiciones definitivas de bono. `booking_policy_versions` deja esas columnas nulas en un borrador que no se asigna a reservas. `null` no significa cero ni ausencia de restricciones comerciales.
+El alumno aprueba el 20/10 caducidad académica de 15 minutos y preparación de 30 minutos antes de la sesión. Su activación funcional sigue pendiente; los borradores existentes no se cambian. Siguen pendientes cancelación, condiciones de confirmación/cobro, inventario inicial real, criterio de diploma, penalizaciones y condiciones definitivas de bono. `booking_policy_versions` deja esas columnas nulas en un borrador que no se asigna a reservas. `null` no significa cero ni ausencia de restricciones comerciales.
 
 Los idiomas de juego y traducciones son conceptos distintos. Se preparan ES/EN conforme al proyecto; los textos ingleses de los seeders son demostrativos, no una traducción comercial aprobada.
 
@@ -126,3 +126,9 @@ La base local se copia antes de migrar y se comprueba que los registros y valore
 `MythosDemoSeeder` conserva el conjunto inicial; `CompleteDataModelSeeder` añade ejemplos relacionados para todas las áreas. Son personas ficticias con correos `@example.test`. No se envían mensajes, generan archivos ni realizan cobros. Los registros de bonos/valoraciones solo muestran su estructura futura.
 
 Para consultar sin modificar: `php scripts/database_overview.php` y `php scripts/demo_relationships.php`. Para cargar datos demo: `php artisan db:seed`. No se ejecuta `migrate:fresh` sobre la base local existente.
+
+## Impactos de las correcciones de S1 del 20/10
+
+La [revisión docente de S1](revision-sprint-1.md) no es una corrección ni una calificación de S2. Antes de implementar los nuevos informes se necesitarán dos cambios de esquema con migraciones adicionales que conserven datos: minutos de intervención en maintenance_actions y ampliar generated_documents.kind para daily_report y maintenance_report. La estructura publicada no contiene todavía esos cambios. Los informes usarán tiempos, no costes inventados.
+
+Los estados, vencimiento, participantes, precio y preparación ya tienen columnas; todavía deben implementarse las transacciones y servicios que apliquen los tiempos aprobados y conserven el precio/grupo confirmado. Los registros de documentos y mensajes no generan PDFs ni envían correos por sí solos.

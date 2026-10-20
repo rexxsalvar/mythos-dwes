@@ -1,158 +1,174 @@
-# Product Backlog inicial
+# Product Backlog
 
-Versión revisada · 18/10/2026. T-07 y HU-10 se refinan por el nuevo enunciado docente; no cambian las fechas oficiales. Estado actual de cada elemento: [tablero](tablero.md). P1 = necesario para mínimos o núcleo; P2 = complemento del producto; P3 = ampliación opcional. El sprint es una previsión, no un compromiso cerrado de todos los detalles.
-
-Cada historia se descompondrá en tareas de desarrollo al planificar su sprint. Los criterios de aceptación siguientes permiten comprobar su resultado sin imponer todavía el diseño completo.
+Revisión: 20/10/2026, por las [correcciones del profesor al sprint 1](revision-sprint-1.md). Se conservan 16 historias y 12 tareas, sus identificadores y las fechas oficiales. P1 = obligatorio o núcleo; P2 = complemento de producto; P3 = ampliación opcional. El [tablero](tablero.md) refleja el seguimiento; los criterios siguientes no declaran funciones implementadas.
 
 ## Tareas del sprint 1
 
 | ID | Prioridad | Entregable | Criterio de aceptación |
 |---|---|---|---|
-| T-01 | P1 | Elegir temática y alcance | Mythos identificado como negocio real; reserva, partida y mantenimiento delimitados. |
-| T-02 | P1 | Propuesta formal | PDF breve con alcance, entidades, roles, mínimos/ampliaciones y calendario docente; maquetación revisada. |
-| T-03 | P1 | Crear repositorio Git local | Rama main, README, exclusión de temporales/secretos y primer commit con los entregables. |
-| T-04 | P1 | Redactar Product Backlog | Historias con objetivo, prioridad, sprint y criterios de aceptación; tareas técnicas identificadas. |
-| T-05 | P1 | Configurar tablero local | Estados definidos, trabajo de S1 separado del backlog, límites y definición de terminado. |
-| T-06 | P1 | Publicar en GitHub privado y Projects | Repositorio remoto privado, commit publicado, proyecto con tarjetas y estados; enlaces verificados. Depende de T-02 a T-05 y de acceso a GitHub. |
+| T-01 | P1 | Tema y alcance | Mythos como nombre definitivo; reglas académicas y exclusiones diferenciadas de las condiciones reales del negocio. EscapeHub solo como origen del material. |
+| T-02 | P1 | Propuesta formal | PDF breve revisado con siete recursos API, cinco CRUD/policies, siete scopes/Livewire/comandos, cinco pares evento-listener/jobs/correos, tres informes complejos, ES/EN y 85 % obligatorio. |
+| T-03 | P1 | Git local | Rama main, historial conservado y exclusión de secretos, dependencias y temporales. |
+| T-04 | P1 | Backlog | 28 elementos sin duplicados, criterios comprobables y dependencias actualizadas con las correcciones. |
+| T-05 | P1 | Tablero local | Seis estados, límites y separación entre planificación e implementación. |
+| T-06 | P1 | GitHub y Projects | Repositorio y tablero existentes, enlaces públicos, rama main y criterios de las tarjetas coherentes con la revisión; no crear otro proyecto. |
 
 ## Historias de usuario
 
 ### HU-01 · Acceso y permisos
 
-**P1 · Sprint 3 · Depende de T-07.** Como cliente o administrador, quiero acceder a mi área para realizar solo las operaciones autorizadas.
+**P1 · Sprint 3 · Depende de T-07.** Como cliente o personal, quiero acceder a mi área con las operaciones de mi perfil.
 
-- Registro, acceso y cierre de sesión; rutas públicas y privadas separadas.
-- Cliente y administrador implementados con Laravel-permission. Se prevén perfiles adicionales para el personal.
-- ReservationPolicy impide consultar o modificar reservas ajenas, salvo permiso administrativo.
+- Registro, inicio y cierre de sesión, rutas públicas/privadas y roles con Laravel-permission.
+- Cliente y administrador como mínimo; recepción, game master y mantenimiento según operativa.
+- ReservationPolicy impide acceso a reservas ajenas; matriz de cinco policies documentada en la revisión.
+- Anónimo recibe 401 en API privada y autenticado sin permiso recibe 403; permisos aplicados en servidor.
 
 ### HU-02 · Catálogo de experiencias
 
-**P1 · Sprint 4 · Depende de HU-01.** Como visitante, quiero conocer las experiencias para elegir una partida adecuada a mi grupo.
+**P1 · Sprint 4 · Depende de HU-01.** Como visitante, quiero elegir una experiencia y conocer sus tarifas.
 
-- Listado y detalle con duración, capacidad, ubicación y tarifa por participantes.
-- Administración crea, consulta, modifica y da de baja experiencias; las vinculadas a histórico se archivan o restringen.
-- Expedición Maldita aparece como dato real de referencia, sin clientes reales en las pruebas.
+- Listado/detalle con duración, capacidad, ubicación y tarifas de grupo vigentes; scopes published y effectiveForGroup.
+- CRUD completo de experiencias con ExperiencePolicy: escrituras administrativas e histórico conservado.
+- ES/EN de la ficha e idioma disponible para jugar tratados por separado; datos demo sin clientes reales.
+- Editar Rate no recalcula el precio ni los participantes de reservas confirmadas.
 
 ### HU-03 · Salas y sesiones
 
-**P1 · Sprint 4 · Depende de HU-02.** Como administrador, quiero organizar salas y horarios para ofrecer sesiones que podamos atender.
+**P1 · Sprint 4 · Depende de HU-02.** Como administrador, quiero ofrecer sesiones que podamos atender.
 
-- CRUD de salas y sesiones con experiencia, horario, responsable y estado.
-- Se rechazan solapamientos de sala o responsable; el margen de preparación es configurable.
-- Las sesiones no jugables no pueden aceptar nuevas reservas.
+- CRUD completos de salas y sesiones con experiencia, horario, game master y estado; RoomPolicy y autorización de agenda.
+- Preparación académica de 30 minutos antes del inicio: ocupación de sala y responsable en [inicio - 30 minutos, fin).
+- Rechazar intersecciones de sala o game master incluso con dos altas/cambios concurrentes; permitir límites contiguos.
+- No ofrecer sesiones canceladas, en preparación ya iniciada o afectadas por bloqueos/incidencias críticas.
 
 ### HU-04 · Reservar una partida
 
-**P1 · Sprint 4 · Depende de HU-03.** Como cliente, quiero reservar una sesión para asegurar la partida de mi grupo.
+**P1 · Sprint 4 · Depende de HU-03.** Como cliente, quiero reservar una sesión exclusiva para mi grupo.
 
-- Participantes dentro del mínimo y máximo; tarifa calculada por el servidor y guardada en la reserva.
-- Dos intentos simultáneos no generan dos reservas activas de la misma sesión.
-- El cliente ve próximas reservas mediante un scope funcional; las pendientes tienen una caducidad definida.
+- Validar aforo y calcular el precio en servidor. Una reserva pending o confirmed por sesión como máximo.
+- Pending bloquea 15 minutos, hasta el inicio de preparación si llega antes; guardar expires_at. Tras vencer no se confirma.
+- Reservar/caducar/confirmar dentro de transacción con bloqueo de escritura y restricción única; dos peticiones concurrentes dejan una sola activa.
+- Aplicar los estados pending, confirmed, completed, cancelled y expired y sus transiciones según la revisión.
+- Al confirmar conservar players, total_cents, currency, tarifa y fecha; posteriores cambios de Rate no recalculan el histórico.
+- Scopes upcoming y activeAt usados en consultas funcionales. La limpieza al reservar no depende solo del comando periódico.
 
 ### HU-05 · Consultar y cancelar reservas
 
-**P1 · Sprint 4 · Depende de HU-04.** Como cliente, quiero consultar mi reserva y cancelarla cuando esté permitido para gestionar cambios de planes.
+**P1 · Sprint 4 · Depende de HU-04.** Como cliente, quiero consultar mi reserva y cancelarla según las condiciones.
 
-- El historial y detalle se restringen al titular y al personal autorizado.
-- La cancelación comprueba estado y antelación; libera la sesión solo si sigue siendo jugable y conserva el histórico.
-- Recepción o administración pueden realizar cambios autorizados con nueva validación de horario y tarifa.
+- Historial y detalle del titular o personal autorizado mediante ReservationPolicy.
+- Validar estado y antelación acordada antes de cancelar; conservar la reserva y registrar la transición.
+- Liberar la sesión solo si no persisten bloqueos y sigue siendo ofertable; cancelación y confirmación concurrentes no producen estados contradictorios.
+- Cambios de grupo/importe por operación autorizada y con antes/después; no aplicar cambios de catálogo a reservas confirmadas automáticamente.
+- El plazo concreto de cancelación sigue pendiente de acuerdo antes de implementar esa validación.
 
 ### HU-06 · Gestión interactiva
 
-**P1 · Sprint 5 · Depende de HU-02 a HU-05.** Como personal, quiero gestionar el catálogo, las reservas y la agenda sin recargas completas para agilizar la atención.
+**P1 · Sprint 5 · Depende de HU-02 a HU-05 y HU-09 para su CRUD.** Como personal, quiero gestionar la actividad sin recargas completas.
 
-- Tres clases Livewire: CRUD completo de experiencias, CRUD completo de reservas y agenda filtrable.
-- Los CRUD cubren creación, listado/detalle, edición y baja con las restricciones del dominio.
-- Un scope complejo combina fecha, reservas activas y bloqueos para filtrar sesiones disponibles.
+- Siete clases Livewire: ExperiencesManager, RoomsManager, SessionsManager, ReservationsManager, IncidentsManager, AgendaBrowser y PreparationPanel.
+- Cinco CRUD completos en los cinco gestores; agenda filtrable y panel de preparación usados en pantallas reales.
+- Aplicar las cinco policies; siete scopes del inventario utilizados. Disponibilidad e incidencias incluyen relaciones y condiciones complejas.
+- FormRequest y componentes Blade de T-08 reutilizados; no contar componentes Blade como clases Livewire.
 
 ### HU-07 · Equipos
 
-**P2 · Sprint 5 · Depende de HU-04.** Como cliente, quiero identificar a mi equipo para asociar nuestras reservas y resultados.
+**P2 · Sprint 5 · Depende de HU-04.** Como cliente, quiero asociar reservas y resultados a mi equipo.
 
-- Relación N:N entre equipos y usuarios con función y fecha de incorporación en el pivote.
-- Solo los usuarios autorizados administran un equipo; los participantes sin cuenta cuentan igualmente para el aforo.
+- N:N equipos-usuarios con función y fecha de incorporación en el pivote.
+- Solo usuarios autorizados gestionan el equipo; participantes sin cuenta cuentan para el aforo.
+- Cambiar la composición de un equipo no modifica los participantes históricos de una reserva.
 
 ### HU-08 · Preparación y resultados
 
-**P1 · Sprint 5 · Depende de HU-03, HU-04.** Como game master, quiero preparar y cerrar mis partidas para registrar cómo se desarrolló cada experiencia.
+**P1 · Sprint 5 · Depende de HU-03 y HU-04.** Como game master, quiero preparar y cerrar mis partidas.
 
-- Registro de llegada y lista de preparación; comprobaciones obligatorias antes del inicio.
-- GameSessionPolicy restringe las modificaciones a sesiones asignadas o a administración.
-- Pistas utilizadas en N:N con momento y penalización; resultado final único con tiempo y éxito o no.
+- Llegada y lista de preparación, comprobaciones obligatorias y GameSessionPolicy para partidas asignadas o administración.
+- Pistas N:N con momento y penalización; resultado final único con tiempo y éxito.
+- PreparationPanel permite registrar preparación y resultado; no iniciar una partida con incidencia crítica.
+- La finalización registrada permite emitir GameSessionCompleted en S7, sin crear resultados automáticamente desde un comando.
 
 ### HU-09 · Incidencias y mantenimiento
 
-**P1 · Sprint 5 · Depende de HU-03.** Como técnico, quiero atender averías para recuperar la disponibilidad de una sala.
+**P1 · Sprint 5 · Depende de HU-03.** Como técnico, quiero resolver averías y registrar el trabajo realizado.
 
-- CRUD de incidencias y actuaciones con responsable, gravedad y estado.
-- Una incidencia crítica impide nuevas reservas e inicio de partidas; las ya confirmadas se señalan para revisión.
-- Un scope complejo filtra incidencias por relación con sala, gravedad y estado. Resolver una no reabre la sala si persisten otros bloqueos.
+- CRUD completo de incidencias y gestión de actuaciones con técnico, gravedad, estado y minutos reales de intervención.
+- Incorporar duration_minutes nullable mediante nueva migración, sin inventar tiempos de registros anteriores; base para el informe de mantenimiento.
+- IncidentPolicy limita acceso y cambios; scopes requiringAttention y performedBetween usados por consultas e informe.
+- Incidencia crítica bloquea reservas e inicio; confirmadas afectadas marcadas para revisión; resolver una no elimina otros bloqueos.
 
 ### HU-10 · API para clientes externos
 
-**P1 · Sprint 6 · Depende de HU-04, HU-05.** Como usuario de un cliente externo, quiero consultar experiencias y gestionar reservas mediante la API.
+**P1 · Sprint 6 · Depende de HU-02 a HU-05 y HU-09.** Como cliente externo, quiero consultar oferta y gestionar reservas con autorización.
 
-- Al menos siete modelos, según el enunciado docente de S2: Experience y Reservation con dos CRUD completos; GameSession, Room, Team, Incident y MaintenanceAction con consultas autorizadas. Modelos preparados en S2; endpoints en S6.
-- Reservas autenticadas con Sanctum; escritura administrativa protegida también en experiencias. Se aplican las mismas reglas que en la web.
-- Borrador de documentación con peticiones, respuestas, errores y autenticación; bajas/cancelaciones documentadas.
+- Siete recursos: User, Experience, Room, GameSession, Reservation, Rate e Incident.
+- Cinco CRUD completos: Experience, Room, GameSession, Reservation e Incident; User y Rate ofrecen consultas según la matriz.
+- User, Reservation e Incident siempre autenticados con Sanctum. Experiencias y salas con escrituras administrativas; sesiones gestionadas por personal autorizado.
+- Mismas policies/reglas que en web; sin reservas ajenas ni datos personales en disponibilidad pública; errores 401/403 comprobables.
+- Contrato con operaciones, filtros, paginación, ejemplos, errores, autenticación y bajas/cancelaciones; Team y MaintenanceAction quedan como modelos internos.
 
 ### HU-11 · Avisos y trabajo en segundo plano
 
-**P1 · Sprint 7 · Depende de HU-04, HU-09.** Como cliente, quiero recibir confirmación y recordatorio para conocer los datos de mi partida.
+**P1 · Sprint 7 · Depende de HU-04, HU-05, HU-08 y HU-09.** Como cliente o personal, quiero recibir los avisos del flujo de reservas y partidas.
 
-- Dos eventos: ReservationConfirmed e IncidentReported; listeners de correo de confirmación y aviso interno al personal.
-- Dos jobs: generación de documento y envío de recordatorios; al menos el segundo utiliza colas. La plantilla PDF se completará en S8.
-- Dos emails diferenciados; no se envían recordatorios de reservas canceladas ni se duplican por reintentos.
+- Cinco pares evento-listener: ReservationConfirmed/QueueReservationConfirmation; ReservationCancelled/QueueReservationCancellation; IncidentReported/HandleIncidentImpact; GameSessionCompleted/QueueSessionResult; DocumentRequested/QueueDocumentGeneration.
+- Cinco jobs: SendCustomerEmail, SendIncidentAlert y GenerateDocument en cola; ExpirePendingReservations y ReviewAffectedReservations síncronos.
+- Cinco correos: confirmación, recordatorio, cancelación, incidencia interna y resultado. El último no depende del diploma opcional.
+- Eventos después del commit, registro de envíos y claves para evitar duplicados; comprobar errores y reintentos. Sin recordatorios de canceladas/vencidas.
+- Infraestructura de documentos preparada en S7; tres plantillas complejas y justificante se completan en S8.
 
 ### HU-12 · Documentos e informes
 
-**P1 · Sprint 8 · Depende de HU-04, HU-11.** Como cliente o administrador, quiero descargar documentos para acreditar reservas y revisar la actividad.
+**P1 · Sprint 8 · Depende de HU-04, HU-09 y HU-11.** Como personal, quiero revisar actividad y mantenimiento con documentos verificables.
 
-- Dos PDF con laravel-dompdf: justificante de reserva e informe mensual de ocupación e importes.
-- El informe complejo incluye filtros, tablas, agregaciones y totales; cobros e importes reservados se distinguen.
-- El cliente no descarga justificantes de otros usuarios; el informe queda restringido a administración.
+- Tres PDF complejos con laravel-dompdf: mensual de actividad, diario de operaciones y mantenimiento, más justificante simple obligatorio.
+- Mensual: mes/local/experiencia/sala/estado; sesiones ofertadas y ocupadas, porcentaje, participantes, reservado, cobrado, devoluciones y neto por día y experiencia.
+- Diario: día/local/sala/experiencia/game master/estado; detalle de sesiones y participantes; sesiones y minutos de juego/preparación por sala y responsable.
+- Mantenimiento: periodo/sala/gravedad/estado/técnico; incidencias y actuaciones; recuentos únicos, minutos de intervención y media de resolución.
+- Aplicar filtros y agregados de la revisión sin multiplicar totales por joins; comprobar casos vacíos y varias filas relacionadas, paginación y subtotales.
+- Informes para personal autorizado; justificante solo de la reserva propia o por personal autorizado. Ampliar previamente el CHECK de documentos con daily_report y maintenance_report, conservando datos.
 
 ### HU-13 · Dos idiomas
 
-**P1 · Sprint 8 · Depende de HU-06.** Como usuario, quiero usar la aplicación en español o inglés para comprender sus contenidos.
+**P1 · Sprint 8 · Depende de HU-06. Obligatoria.** Como usuario, quiero usar la interfaz en español o inglés.
 
-- Selector y traducciones en ES/EN para navegación, formularios, validación y pantallas principales.
-- La elección se conserva durante la sesión y no cambia permisos ni datos de reserva.
-
-Nota de modelo (S2): las tablas de valoraciones y bonos ya están preparadas; esto no cumple por sí mismo los criterios funcionales ni cambia las prioridades de las siguientes ampliaciones.
+- Selector ES/EN; navegación, formularios, validación, pantallas y correos traducidos; elección conservada durante la sesión.
+- Cambiar idioma no modifica datos ni permisos; mantener fallback para contenido sin traducción.
+- Separar idioma de interfaz de idioma de juego; no dar por ofrecida una partida en inglés por traducir su ficha.
 
 ### HU-14 · Diploma y valoración
 
-**P3 · Sprint 9 · Depende de HU-08, HU-12 y mínimos verificados.** Como cliente, quiero recordar y valorar mi partida después de jugar.
+**P3 · Sprint 9 · Depende de HU-08/HU-12 y mínimos cubiertos. Ampliación opcional.** Como cliente, quiero conservar un recuerdo y valorar la partida.
 
-- Diploma con datos de resultado; criterio de emisión definido antes de implementar.
-- Una valoración por reserva completada, realizada por su titular; moderación administrativa.
+- Diploma simple con criterio de emisión acordado y datos del resultado; puede adjuntarse al correo obligatorio de resultado, que funciona sin él.
+- Una valoración por reserva completada, solo del titular y con moderación administrativa.
+- La existencia de tablas no completa estas funciones.
 
 ### HU-15 · Bono regalo
 
-**P3 · Sprint 10 · Depende de HU-04 y mínimos verificados.** Como cliente, quiero canjear un bono para reservar una experiencia regalada.
+**P3 · Sprint 10 · Depende de HU-04 y mínimos cubiertos. Ampliación opcional.** Como cliente, quiero canjear una experiencia regalada.
 
-- Código con vigencia y uso único; no puede consumirse dos veces por peticiones simultáneas.
-- El importe o grupo cubierto se valida al reservar. Pago online y logística del bono físico no se incluyen automáticamente.
+- Código con vigencia y uso único; dos solicitudes simultáneas no lo consumen dos veces.
+- Validar importe o grupo cubierto según condiciones acordadas; pago online y logística física excluidos.
 
 ### HU-16 · Exportación de actividad
 
-**P3 · Sprint 10 · Depende de HU-12 y mínimos verificados.** Como administrador, quiero exportar informes para analizarlos fuera de la aplicación.
+**P3 · Sprint 10 · Depende de HU-12 y mínimos cubiertos. Ampliación opcional.** Como administrador, quiero analizar la actividad fuera de la aplicación.
 
-- Exportación Excel con los mismos filtros y totales que el informe.
-- Acceso administrativo y ausencia de columnas personales innecesarias.
+- Excel con los mismos filtros y totales que el informe; acceso administrativo y sin datos personales innecesarios.
 
 ## Tareas técnicas posteriores
 
 | ID | Prioridad / sprint | Trabajo | Criterio de aceptación |
 |---|---|---|---|
-| T-07 | P1 / 2 | E-R, migraciones, factories y seeders | Modelo de datos completo previsto para Mythos (32 tablas de negocio, con núcleo y ampliaciones distinguidos); E-R justificado con 1:N y N:N; al menos siete modelos para API; pivote con datos propios manejado desde código; migraciones, claves, restricciones e índices; factories realistas; seeders reproducibles; pruebas iniciales de modelos y relaciones; reconstrucción y demostración desde cero. Véanse [enunciado S2](sprint-2-enunciado.md) y [modelo](modelo-datos.md). |
-| T-08 | P1 / 4 | Validación y componentes | FormRequest en formularios de más de dos campos; componentes Blade de input, fechas, select, labels y checkbox utilizados en pantallas reales. |
-| T-09 | P1 / 7 | Tres comandos Artisan | Caducar reservas, preparar recordatorios y generar informe; el último se llama también desde código autorizado. Comandos verificables sin efectos duplicados. |
-| T-10 | P1 / 9 | Pest y correcciones | Cobertura mínima del 85 % del código de aplicación; pruebas de permisos, aforo, concurrencia, cancelaciones, bloqueos y documentos; errores corregidos. |
-| T-11 | P1 / 10 | Cierre técnico | Documentación API y README completos, mínimos comprobados y versión candidata. Revisar Git sin reescribir ni borrar el historial como tarea rutinaria. |
-| T-12 | P1 / final | Demo y entrega | Integración final comprobada, guion de demo y material de defensa; entrega oficial del alumno el 12/02/2027. |
+| T-07 | P1 / 2 | Modelo de datos | E-R justificado, claves/índices, al menos siete modelos preparados, relaciones y pivote desde código, factories, seeders, pruebas iniciales y reconstrucción. Evidencia del 18/10 conservada; impactos de la corrección de S1 anotados, no presentados como corrección docente de S2. |
+| T-08 | P1 / 4 | Validación y componentes | FormRequest en formularios de más de dos campos y componentes input/fechas/select/labels/checkbox utilizados en pantallas reales, con errores junto al campo. |
+| T-09 | P1 / 7 | Siete comandos Artisan | reservations:expire, reservations:remind, reports:monthly, reports:daily, reports:maintenance, sessions:send-results e incidents:review-reservations. Informe mensual invocado desde código autorizado; funcionamiento, errores y reejecución comprobados. |
+| T-10 | P1 / 9 | Pest y cobertura obligatoria | Informe de al menos 85 % del código de aplicación. Comprobar policies, aforo, caducidad, concurrencia, preparación, precio/grupo históricos, cinco correos/colas, tres informes y ES/EN. No presentar un recuento de pruebas como porcentaje medido. |
+| T-11 | P1 / 10 | Cierre técnico | Contrato API final y revisión del inventario corregido completo; README centrado en el proyecto y enlaces; versión candidata, historial conservado y mínimos antes que extras. |
+| T-12 | P1 / Final | Demo y entrega | Integración, recorridos de permisos/reserva/informes/idiomas, guion de defensa y enlaces; entrega oficial 12/02/2027. Comprobar nombre Mythos en el registro docente. |
 
 ## Definición de terminado
 
-Una tarjeta pasa a **Hecho** cuando cumple sus criterios, tiene evidencia (archivo, commit o resultado verificable) y no presenta defectos pendientes que impidan su uso. Para código se ejecutan las pruebas relevantes; para documentación se revisan contenido, enlaces y formato. Preparar la documentación no equivale a implementar las funciones que describe.
+Una tarjeta funcional pasa a Hecho cuando cumple sus criterios con código y evidencia, sin defectos que impidan usarla. Documentar una función no la implementa. En las tareas documentales se revisan contenido, enlaces y maquetación. Las ampliaciones esperan a los mínimos y las correcciones no crean tarjetas duplicadas.

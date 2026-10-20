@@ -1,51 +1,53 @@
 # Requisitos y alcance
 
-Referencia: calendario de sprints facilitado por el profesor. Revisión: 18/10/2026. El sprint 2 implementa la estructura completa prevista del producto y conserva las pruebas iniciales anteriores; las funciones posteriores siguen planificadas. El nuevo enunciado del profesor prevalece sobre la previsión inicial: [enunciado S2](sprint-2-enunciado.md) y [modelo implementado](modelo-datos.md).
+Revisión: 20/10/2026. Las [correcciones del profesor al sprint 1](revision-sprint-1.md) actualizan la propuesta y prevalecen sobre sus cantidades anteriores. El [enunciado de S2](sprint-2-enunciado.md) se conserva como fue recibido; todavía no hay corrección docente de S2. La planificación no equivale a implementación ni a calificación.
 
-## Mínimos docentes
+## Alcance obligatorio corregido
 
-| Requisito | Aplicación prevista | Sprint | Backlog |
-|---|---|---|---|
-| Propuesta, Git, tablero y backlog | Documentación y organización inicial | 1 | T-01 a T-06 |
-| Diagrama E-R con 1:N y N:N y pivote con columnas propias | Usuarios-reservas; equipos-usuarios con función y fecha de incorporación | 2 | T-07 |
-| Migraciones, factories y seeders; al menos siete modelos para la API y pruebas iniciales | Modelo completo de 32 tablas de negocio, restricciones, índices, relaciones desde código y carga reproducible | 2 | T-07 |
-| Autenticación y rutas públicas/privadas | Catálogo público y área de cliente/personal | 3 | HU-01 |
-| Dos roles con Laravel-permission | Cliente y administrador; otros perfiles previstos para la operativa | 3 | HU-01 |
-| Primera Policy con contenido real | ReservationPolicy: propiedad, acción y estado | 3 | HU-01, HU-05 |
-| CRUD web | Experiencias, salas, sesiones y reservas; incidencias en la operativa | 4-5 | HU-02 a HU-09 |
-| FormRequest en formularios de más de dos campos | Experiencias, sesiones, reservas e incidencias | 4 | T-08 |
-| Primer scope funcional | Reservas futuras | 4 | HU-04 |
-| Componentes input, fechas, select, labels y checkbox | Componentes Blade reutilizables | 4 | T-08 |
-| Tres clases Livewire, dos CRUD completos | Experiencias, reservas y agenda filtrable | 5 | HU-06 |
-| Segunda Policy con contenido real | GameSessionPolicy: asignación al game master y estado | 5 | HU-08 |
-| Tres scopes; dos complejos | Reservas futuras; disponibilidad con reservas/bloqueos; incidencias por sala, gravedad y estado | 5 | HU-04, HU-06, HU-09 |
-| API de al menos siete modelos con dos CRUD completos | Experience y Reservation: CRUD; GameSession, Room, Team, Incident y MaintenanceAction: consultas autorizadas | 6 | HU-10 |
-| Un CRUD autenticado | Reservas con Sanctum; escritura del catálogo también protegida | 6 | HU-10 |
-| Documentación funcional de API | Peticiones, respuestas, errores y autenticación | 6 y 10 | HU-10, T-11 |
-| Tres comandos; uno llamado desde código | Caducar reservas, preparar recordatorios y generar informe desde administración | 7 | T-09 |
-| Dos eventos y sus listeners | ReservationConfirmed e IncidentReported, con confirmación y aviso interno | 7 | HU-11 |
-| Dos jobs; uno con colas | Generar documento y enviar recordatorios; este último en cola | 7 | HU-11 |
-| Dos emails | Confirmación y recordatorio | 7 | HU-11 |
-| Dos PDF con laravel-dompdf; uno complejo | Justificante e informe mensual con filtros, agregaciones y totales | 8 | HU-12 |
-| Dos idiomas | Español e inglés; requisito mínimo, no ampliación | 8 | HU-13 |
-| Pest y cobertura mínima del 85 % | Suite del código de aplicación, con reglas y permisos | 9 | T-10 |
-| Cierre técnico, README y revisión de mínimos | Versión candidata y documentación actualizada | 10 | T-11 |
-| Integración final, demo y defensa | Preparación de entrega del 12/02/2027 | Final | T-12 |
+| Requisito | Aplicación en Mythos | Sprint / backlog |
+|---|---|---|
+| Propuesta, registro, Git y tablero coherentes | Nombre Mythos, exclusiones, enlaces y criterios de aceptación actualizados | 1 y revisión del 20/10; T-01 a T-06 |
+| E-R, claves, índices, migraciones, factories, seeders y pruebas iniciales | Modelo publicado: 32 tablas de negocio; relaciones 1:N, N:N y pivotes con datos propios | 2; T-07 |
+| Autenticación y roles con Laravel-permission | Cliente y administrador como mínimo; recepción, game master y mantenimiento para la operativa | 3; HU-01 |
+| Cinco policies | ReservationPolicy, GameSessionPolicy, ExperiencePolicy, RoomPolicy e IncidentPolicy | 3 a 5; HU-01 a HU-09 |
+| Cinco CRUD | Experiencias, salas, sesiones, reservas e incidencias | Web 4-5; API 6; HU-02 a HU-10 |
+| FormRequest y componentes reutilizables | Formularios de más de dos campos; input, fechas, select, labels y checkbox | 4; T-08 |
+| Siete clases Livewire | Cinco gestores CRUD, agenda y preparación de partidas | 5; HU-06, HU-08 |
+| Siete scopes | Catálogo publicado, reservas futuras, reservas activas, disponibilidad, incidencias, tarifas vigentes y mantenimiento por periodo; al menos dos complejos | 4-5; HU-02 a HU-09 |
+| Siete recursos API | User, Experience, Room, GameSession, Reservation, Rate e Incident | 6; HU-10 |
+| Autorización API | User, Reservation e Incident siempre autenticados; escrituras de experiencias y salas administrativas; mismas reglas que en web | 6; HU-10 |
+| Siete comandos Artisan | Caducidad, recordatorios, tres informes, resultados y revisión de reservas afectadas; informe mensual invocado también desde código | 7; T-09 |
+| Cinco pares evento-listener | Confirmación, cancelación, incidencia, finalización de partida y solicitud de documento | 7; HU-11 |
+| Cinco jobs, tres en cola | Correo al cliente, aviso interno y documento en cola; caducidad y revisión de reservas de forma síncrona | 7; HU-11, T-09 |
+| Cinco correos | Confirmación, recordatorio, cancelación, incidencia interna y resultado | 7; HU-11 |
+| Tres PDF complejos con laravel-dompdf | Mensual de actividad, diario de operaciones y mantenimiento; filtros y agregados definidos en la revisión | 8; HU-12 |
+| Justificante PDF simple | Documento propio de la reserva, con acceso restringido | 8; HU-12 |
+| Interfaz bilingüe obligatoria | Español e inglés en navegación, formularios, validación, pantallas y correos; distinto del idioma en que se juega | 8; HU-13 |
+| Pest y cobertura mínima del 85 % | Informe medido sobre el código de aplicación y pruebas de reglas, permisos, concurrencia y documentos | 9; T-10 |
+| Documentación API y revisión de todos los mínimos | Contrato, errores, permisos, evidencia y versión candidata | 6 y 10; HU-10, T-11 |
+| Demo, defensa y entrega | Semana final, sin crear un sprint 11 | Final; T-12; 12/02/2027 |
 
-## Compromisos de producto
+Los nombres de clases, informes y automatizaciones y sus criterios comprobables están en la [revisión del sprint 1](revision-sprint-1.md). Se conserva el [modelo implementado el 18/10](modelo-datos.md), con los ajustes posteriores identificados expresamente.
 
-La propuesta mantiene gestión de salas, preparación, resultados, equipos e incidencias para resolver un flujo real del negocio. Los cinco perfiles autenticados son una decisión de producto, aunque el mínimo docente sea de dos roles. No se interpreta que el profesor exija cinco CRUD en API, cinco clases CRUD Livewire o cinco PDF.
+## Reglas académicas acordadas
 
-Las bajas de reservas conservarán el histórico. El contrato de API explicará las restricciones de borrado y cancelación. La confirmación deberá impedir reservas duplicadas incluso en peticiones simultáneas.
+- Una sesión es privada para un solo grupo: como máximo una reserva activa, pendiente o confirmada.
+- Pendiente bloqueada durante **15 minutos**, con vencimiento anterior al comienzo de la preparación si este llega antes. No se aceptan nuevas reservas cuando ha comenzado la preparación.
+- Preparación de **30 minutos antes del inicio**. Sala y game master se ocupan en `[inicio - 30 minutos, fin)`; se rechazan intersecciones incluso con escrituras concurrentes.
+- Estados: pending, confirmed, completed, cancelled y expired. Caducidad cada minuto y comprobación transaccional al reservar o confirmar; no se depende solo del planificador.
+- Al confirmar se conservan precio total del grupo, moneda y número de participantes. Editar Rate no altera el histórico de la reserva.
+- Las incidencias críticas bloquean nuevas reservas e inicio; las confirmadas afectadas se revisan. Resolver una incidencia no libera otros bloqueos activos.
 
-## Ampliaciones
+Los 15 y 30 minutos fueron aprobados por el alumno el 20/10 como decisiones académicas, no como condiciones reales del negocio. Su implementación funcional sigue pendiente de las historias correspondientes.
 
-Después de los mínimos se priorizan diploma (HU-14), bonos regalo (HU-15) y Excel (HU-16). Pagos online, QR, pasaporte de escapista e informes adicionales quedan como ideas opcionales, sin compromiso de entrega inicial.
+## Ampliaciones y exclusiones
 
-## Decisiones de análisis pendientes
+Valoraciones y diploma (HU-14), bonos regalo (HU-15) y Excel (HU-16) son opcionales. El correo de resultado es obligatorio y no depende de emitir diploma. Las estructuras de valoraciones y bonos existentes no completan esas funciones.
 
-- Plazo de cancelación, caducidad de reservas pendientes y tiempo de preparación.
-- Experiencias y ubicaciones iniciales; condiciones de confirmación y cobros manuales.
-- Criterios de diploma y penalización de pistas.
+Pagos online, QR, pasaporte de escapista, logística física de bonos y publicación en producción quedan fuera de la entrega inicial. Se registran cobros manuales; no se implementa contabilidad ni facturación fiscal. El negocio real aporta contexto, pero la cobertura académica se demuestra mediante los criterios y evidencias del proyecto.
 
-Estas decisiones se resolverán antes de implementar sus reglas. El modelo completo guarda condiciones versionadas como borradores y no asigna valores inventados. Las estructuras de bonos y valoraciones se preparan ahora; sus funciones siguen siendo ampliaciones posteriores. No impiden entregar una propuesta inicial orientativa.
+## Decisiones e impactos pendientes
+
+- Plazo de cancelación, condiciones definitivas de confirmación/cobro, inventario inicial real, criterio del diploma y penalizaciones de pistas.
+- Comprobar el nombre Mythos en el registro externo del centro; su cambio no se da por realizado desde este repositorio.
+- Antes de HU-09/HU-12: nueva migración para minutos de intervención y tipos `daily_report` y `maintenance_report` en documentos. No se cambian datos ni migraciones de S2 con esta revisión documental.

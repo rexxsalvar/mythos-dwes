@@ -1,29 +1,20 @@
 # Publicación en GitHub
 
-Repositorio y GitHub Projects existentes, creados inicialmente privados y hechos públicos posteriormente por indicación del alumno. Visibilidad comprobada en la revisión del 06/10/2026. Última actualización documental: 18/10/2026.
+Revisión documental: 20/10/2026. Nombre definitivo: **Mythos - Sistema de reservas y gestión de escape rooms**. EscapeHub es el material de origen; no se crea otro repositorio ni otro tablero. El nombre de la ficha externa del centro queda pendiente de comprobar con el alumno.
 
-## Configuración realizada
+## Enlaces y configuración
 
-- Repositorio: [rexxsalvar/mythos-dwes](https://github.com/rexxsalvar/mythos-dwes).
-- Visibilidad: **público**.
-- Rama: `main`.
-- Finalidad: reservas y gestión de escape rooms para Mythos (proyecto DWES).
-- Propietario: `rexxsalvar`.
-- Projects: [Mythos - Proyecto DWES](https://github.com/users/rexxsalvar/projects/1).
-- Acceso del proyecto: público.
+- Repositorio existente: [rexxsalvar/mythos-dwes](https://github.com/rexxsalvar/mythos-dwes), propietario rexxsalvar y rama main. Visibilidad pública comprobada por el complemento GitHub el 20/10/2026.
+- Tablero: [Mythos - Proyecto DWES](https://github.com/users/rexxsalvar/projects/1). Acceso público comprobado en la revisión anterior del 06/10; la consulta web automatizada del 20/10 no permite revalidar su visibilidad.
+- Tabla: [Product Backlog](https://github.com/users/rexxsalvar/projects/1/views/2).
+- Criterios vigentes: [backlog](backlog.md), [revisión de S1](revision-sprint-1.md) y [calendario de diez sprints](calendario.md).
 
-## Tablero Projects
+Se mantienen 16 historias y 12 tareas. Campos: Prioridad P1/P2/P3, Sprint previsto 1 a 10/Final y Status. Estados: Backlog, Por hacer, En curso, En revisión, Bloqueado y Hecho. Los identificadores HU/T se conservan.
 
-Vista Board agrupada por Status: **Backlog, Por hacer, En curso, En revisión, Bloqueado, Hecho**.
+## Revisión de las tarjetas
 
-Campos configurados: **Prioridad** (P1/P2/P3), **Sprint previsto** (1 a 10 / Final) y **Status**. Los identificadores HU/T figuran en los títulos; no requieren un campo adicional. El calendario está en `calendario.md`.
+Las correcciones de S1 refinan los cuerpos y criterios de las tarjetas existentes. Se sustituyen los mínimos antiguos por siete recursos API y cinco CRUD, cinco policies, siete scopes, siete clases Livewire, siete comandos, cinco pares evento-listener, cinco jobs con tres en cola, cinco correos y tres informes PDF complejos. ES/EN y cobertura medida del 85 % siguen obligatorios.
 
-Vistas: tablero Board y [Product Backlog](https://github.com/users/rexxsalvar/projects/1/views/2) en formato tabla. Se comprobaron las 16 historias y 12 tareas, con prioridades y sprints conforme al backlog. La vista Sprint actual puede añadirse más adelante; no es un requisito del sprint 1.
+T-01 a T-06 conservan su evidencia documental y T-07 la implementación publicada el 18/10 (52f2fe7). Las funciones posteriores continúan pendientes; los criterios no se marcan completados por estar descritos. Los cambios de planificación no cuentan como una corrección docente de S2.
 
-## Evidencia y seguimiento
-
-T-01 a T-06 están en Hecho y sus issues cerrados. T-07 corrigió su cierre inicial y se completó con el commit `4a5b05b`. El 18/10 se amplía de nuevo su modelo por indicación del alumno, con 32 tablas de negocio; la estructura de todo el producto queda distinguida de las funciones pendientes. Su evidencia está en [verificación del sprint 2](sprint-2-verificacion.md); el cierre definitivo se registra en [issue #23](https://github.com/rexxsalvar/mythos-dwes/issues/23) con el commit publicado.
-
-Los 21 elementos posteriores (HU-01 a HU-16 y T-08 a T-12) permanecen en Backlog. Los endpoints de HU-10 no están implementados: su previsión se amplía a siete modelos por el nuevo requisito del profesor, manteniendo dos CRUD completos.
-
-Git permite consultar el remoto y el complemento GitHub permite leer y actualizar issues en esta sesión. Chrome también permite acceder al tablero. El bloqueo de navegador de un chat antiguo no describe el acceso actual. No se añaden colaboradores ni se cambian permisos automáticamente. El estado de publicación se comprueba mediante el hash de `main` remoto, no por la mera existencia de un commit local.
+El commit local y su publicación se distinguen comprobando main remoto. No se reescribe el historial ni se duplican tarjetas. El registro o ficha del centro y la entrega en Moodle no se dan por actualizados sin confirmación externa.
