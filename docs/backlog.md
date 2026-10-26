@@ -1,6 +1,6 @@
 # Product Backlog
 
-Revisión: 20/10/2026, por las [correcciones del profesor al sprint 1](revision-sprint-1.md). Se conservan 16 historias y 12 tareas, sus identificadores y las fechas oficiales. P1 = obligatorio o núcleo; P2 = complemento de producto; P3 = ampliación opcional. El [tablero](tablero.md) refleja el seguimiento; los criterios siguientes no declaran funciones implementadas.
+Revisión: 26/10/2026, por las [correcciones de S1](revision-sprint-1.md) y el [enunciado de S3](sprint-3-enunciado.md). Se conservan 16 historias y 12 tareas, sus identificadores y las fechas oficiales. P1 = obligatorio o núcleo; P2 = complemento de producto; P3 = ampliación opcional. El [tablero](tablero.md) refleja el seguimiento; HU-01 tiene evidencia de implementación y las demás historias siguen pendientes.
 
 ## Tareas del sprint 1
 
@@ -17,12 +17,15 @@ Revisión: 20/10/2026, por las [correcciones del profesor al sprint 1](revision-
 
 ### HU-01 · Acceso y permisos
 
-**P1 · Sprint 3 · Depende de T-07.** Como cliente o personal, quiero acceder a mi área con las operaciones de mi perfil.
+**P1 · Sprint 3 · Depende de T-07. Implementada el 26/10/2026 según el nuevo enunciado.** Como cliente o personal, quiero acceder a mi área con las operaciones de mi perfil.
 
-- Registro, inicio y cierre de sesión, rutas públicas/privadas y roles con Laravel-permission.
-- Cliente y administrador como mínimo; recepción, game master y mantenimiento según operativa.
-- ReservationPolicy impide acceso a reservas ajenas; matriz de cinco policies documentada en la revisión.
-- Anónimo recibe 401 en API privada y autenticado sin permiso recibe 403; permisos aplicados en servidor.
+- Registro, inicio y cierre de sesión; sesiones renovadas, recordar acceso y límite de intentos.
+- Cinco roles efectivos con Laravel-permission: cliente, recepción, game master, mantenimiento y administrador.
+- Rutas nombradas por área con middleware; anónimo redirigido a acceso (401 si solicita JSON), autenticado sin permiso recibe 403.
+- ReservationPolicy para reservas propias/personal autorizado y GameSessionPolicy para partidas asignadas/personal autorizado, aplicadas en consultas reales.
+- Registro siempre como cliente; perfil propio validado sin permitir cambio de rol, identidad o activación. Cuentas desactivadas sin acceso.
+- FormRequest y componentes en los cuatro formularios existentes; errores junto al campo y datos válidos conservados.
+- Pruebas y flujo de demostración: [evidencia S3](sprint-3-verificacion.md). API y métodos de escritura futuros se desarrollan en sus historias, sin darse por implementados aquí.
 
 ### HU-02 · Catálogo de experiencias
 
@@ -84,7 +87,7 @@ Revisión: 20/10/2026, por las [correcciones del profesor al sprint 1](revision-
 
 **P1 · Sprint 5 · Depende de HU-03 y HU-04.** Como game master, quiero preparar y cerrar mis partidas.
 
-- Llegada y lista de preparación, comprobaciones obligatorias y GameSessionPolicy para partidas asignadas o administración.
+- Llegada y lista de preparación y comprobaciones obligatorias. GameSessionPolicy ya limita consultas en S3; en esta historia se amplía a las acciones de la partida asignada o administración.
 - Pistas N:N con momento y penalización; resultado final único con tiempo y éxito.
 - PreparationPanel permite registrar preparación y resultado; no iniciar una partida con incidencia crítica.
 - La finalización registrada permite emitir GameSessionCompleted en S7, sin crear resultados automáticamente desde un comando.
@@ -163,7 +166,7 @@ Revisión: 20/10/2026, por las [correcciones del profesor al sprint 1](revision-
 | ID | Prioridad / sprint | Trabajo | Criterio de aceptación |
 |---|---|---|---|
 | T-07 | P1 / 2 | Modelo de datos | E-R justificado, claves/índices, al menos siete modelos preparados, relaciones y pivote desde código, factories, seeders, pruebas iniciales y reconstrucción. Evidencia del 18/10 conservada; impactos de la corrección de S1 anotados, no presentados como corrección docente de S2. |
-| T-08 | P1 / 4 | Validación y componentes | FormRequest en formularios de más de dos campos y componentes input/fechas/select/labels/checkbox utilizados en pantallas reales, con errores junto al campo. |
+| T-08 | P1 / 3-4 | Validación y componentes | Base implementada en S3 para registro, acceso, perfil y agenda, con cinco componentes y errores junto al campo. Pendiente en S4: aplicar FormRequest y componentes a los nuevos formularios CRUD; la tarea completa sigue abierta. |
 | T-09 | P1 / 7 | Siete comandos Artisan | reservations:expire, reservations:remind, reports:monthly, reports:daily, reports:maintenance, sessions:send-results e incidents:review-reservations. Informe mensual invocado desde código autorizado; funcionamiento, errores y reejecución comprobados. |
 | T-10 | P1 / 9 | Pest y cobertura obligatoria | Informe de al menos 85 % del código de aplicación. Comprobar policies, aforo, caducidad, concurrencia, preparación, precio/grupo históricos, cinco correos/colas, tres informes y ES/EN. No presentar un recuento de pruebas como porcentaje medido. |
 | T-11 | P1 / 10 | Cierre técnico | Contrato API final y revisión del inventario corregido completo; README centrado en el proyecto y enlaces; versión candidata, historial conservado y mínimos antes que extras. |
@@ -172,3 +175,5 @@ Revisión: 20/10/2026, por las [correcciones del profesor al sprint 1](revision-
 ## Definición de terminado
 
 Una tarjeta funcional pasa a Hecho cuando cumple sus criterios con código y evidencia, sin defectos que impidan usarla. Documentar una función no la implementa. En las tareas documentales se revisan contenido, enlaces y maquetación. Las ampliaciones esperan a los mínimos y las correcciones no crean tarjetas duplicadas.
+
+El enunciado de S3 del 26/10 prevalece sobre la previsión de una sola policy y validación/componentes en S4. Se conserva la evidencia de S2 y no se completan otras historias por disponer de sus páginas de consulta.

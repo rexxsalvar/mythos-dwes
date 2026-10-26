@@ -1,0 +1,1 @@
+<x-layout title="Formulario caducado"><section class="panel error-panel"><p class="eyebrow">FORMULARIO CADUCADO</p><h1>Vuelve a abrir el formulario.</h1><p>La sesión del formulario ha caducado. Accede de nuevo para continuar.</p><a class="button" href="{{ route('login') }}">Volver al acceso</a></section></x-layout>

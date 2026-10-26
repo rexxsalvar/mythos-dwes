@@ -99,9 +99,9 @@ Las instalaciones de una sala no se solapan. Una sesión debe estar dentro de su
 
 El diccionario enumera índices y referencias; el SQL incluye los CHECK y triggers. Los históricos financieros y operativos tienen borrado restrictivo. `archived_at`/`is_active` permiten retirar catálogo; esto no se presenta como la ampliación A5 `SoftDeletes`.
 
-## Permisos y API: únicamente preparación de datos
+## Permisos web y preparación de la API
 
-Se usan las migraciones y modelos oficiales de Laravel-permission 8 y Sanctum 4. Roles previstos y datos demo: cliente, administrador, recepción, game master y mantenimiento. Se crean sus registros y asociaciones de demostración, sin conceder permisos funcionales todavía ni emitir tokens.
+S2 preparó las tablas oficiales de Laravel-permission 8 y Sanctum 4. El 26/10, S3 activa cinco roles y ocho permisos web y aplica ReservationPolicy/GameSessionPolicy a las consultas; véase la [evidencia de S3](sprint-3-verificacion.md). No se emiten tokens ni se implementan los endpoints API de S6.
 
 La corrección docente de S1 fija los siete recursos API: User, Experience, Room, GameSession, Reservation, Rate e Incident. Todos tienen modelo. Se planifican cinco CRUD (experiencias, salas, sesiones, reservas e incidencias) y User/Reservation/Incident autenticados; los endpoints siguen pendientes de S6. Team y MaintenanceAction mantienen su función interna.
 

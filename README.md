@@ -2,9 +2,9 @@
 
 Aplicación de reservas y gestión para el negocio de escape rooms Mythos, en Murcia. Proyecto individual del grado de Desarrollo de Aplicaciones Web.
 
-## Estado · 20/10/2026
+## Estado · 26/10/2026
 
-Sprint 1: propuesta, Product Backlog y tablero revisados con las correcciones del profesor del 20/10. Sprint 2: base Laravel 13 con SQLite y modelo publicado el 18/10: 32 tablas de negocio (29 de núcleo y 3 de ampliaciones previstas), más las tablas de permisos, tokens e infraestructura. Se conserva su evidencia de migraciones, factories, seeders y pruebas iniciales. Las pantallas de negocio, autenticación, roles y API siguen previstas para sus sprints.
+Sprint 1: propuesta, Product Backlog y tablero revisados con las correcciones del profesor del 20/10. Sprint 2: base Laravel 13 con SQLite y modelo publicado el 18/10: 32 tablas de negocio (29 de núcleo y 3 de ampliaciones previstas), más las tablas de permisos, tokens e infraestructura. Se conserva su evidencia de migraciones, factories, seeders y pruebas iniciales. Sprint 3 implementado: registro/acceso/salida, cinco roles con permisos, dos policies, perfil validado y consultas protegidas de reservas, agenda e incidencias. Los CRUD completos, Livewire y API siguen previstos para sus sprints.
 
 | Entregable | Archivo |
 |---|---|
@@ -16,6 +16,8 @@ Sprint 1: propuesta, Product Backlog y tablero revisados con las correcciones de
 | Repositorio y Projects | [Configuración de GitHub](docs/github.md) |
 | Correcciones docentes de S1 y criterios | [Revisión del sprint 1](docs/revision-sprint-1.md) |
 | Enunciado actualizado del profesor | [Sprint 2](docs/sprint-2-enunciado.md) |
+| Enunciado de acceso, rutas y validación | [Sprint 3](docs/sprint-3-enunciado.md) |
+| Implementación y demostración del acceso | [Evidencia del sprint 3](docs/sprint-3-verificacion.md) |
 | Modelo completo y diagramas E-R por áreas | [Modelo de datos](docs/modelo-datos.md) |
 | Todas las columnas, claves e índices | [Diccionario](docs/diccionario-datos.md) |
 | Estructura SQLite exportada, sin datos | [Esquema SQL](docs/base-datos.sql) |
@@ -25,13 +27,14 @@ Sprint 1: propuesta, Product Backlog y tablero revisados con las correcciones de
 
 Catálogo, reservas, sesiones, preparación de partidas, equipos, resultados e incidencias. Se utilizará Expedición Maldita como referencia real: 75 minutos y de 2 a 6 jugadores. Reglas académicas aprobadas: 15 minutos de bloqueo de pendientes y 30 minutos de preparación antes de cada sesión. El plazo de cancelación sigue pendiente.
 
-Base instalada: Laravel 13, SQLite y Pest 4, con PHP 8.4. Laravel-permission 8 y Sanctum 4 aportan sus tablas oficiales y relaciones de datos; autenticación, Policies y endpoints siguen pendientes. Livewire y laravel-dompdf se incorporarán en sus sprints. Idiomas: español e inglés. La API tendrá siete recursos (User, Experience, Room, GameSession, Reservation, Rate e Incident) y cinco CRUD. El alcance corregido incluye cinco policies, siete scopes, siete clases Livewire, siete comandos, cinco pares evento-listener, cinco jobs (tres en cola), cinco correos y tres informes PDF complejos. Interfaz ES/EN y cobertura mínima del 85 % son obligatorias. La implementación continúa en sus sprints.
+Base instalada: Laravel 13, SQLite y Pest 4, con PHP 8.4. Laravel-permission 8 aplica los cinco perfiles de acceso web. ReservationPolicy y GameSessionPolicy protegen las consultas. Sanctum conserva su preparación de datos; los endpoints siguen pendientes de S6. Livewire y laravel-dompdf se incorporarán en sus sprints. Idiomas: español e inglés. La API tendrá siete recursos (User, Experience, Room, GameSession, Reservation, Rate e Incident) y cinco CRUD. El alcance corregido incluye cinco policies, siete scopes, siete clases Livewire, siete comandos, cinco pares evento-listener, cinco jobs (tres en cola), cinco correos y tres informes PDF complejos. Interfaz ES/EN y cobertura mínima del 85 % son obligatorias. La implementación continúa en sus sprints.
 
-El mínimo docente de dos roles se cubrirá con cliente y administrador. La propuesta contempla además recepción, game master y mantenimiento. Los mínimos técnicos y las ampliaciones se distinguen en [requisitos](docs/requisitos.md).
+El enunciado de S3 exige y aplica los cinco roles: cliente, recepción, game master, mantenimiento y administrador. Los mínimos técnicos y las ampliaciones se distinguen en [requisitos](docs/requisitos.md).
 
 ## Estado y trabajo pendiente
 
-- Propuesta, backlog, calendario y criterios de tarjetas revisados por las correcciones de S1. Todavía no se ha recibido corrección docente de S2.
+- Propuesta, backlog y calendario revisados por las correcciones de S1 y el enunciado de S3. Todavía no se ha recibido corrección docente de S2.
+- HU-01 completada: 76 pruebas totales (348 assertions), 33 nuevas de acceso/validación; recursos compilados y cinco perfiles revisados en navegador. T-08 continúa en S4 para los futuros formularios CRUD.
 - Impactos de datos pendientes: minutos de intervención de mantenimiento y tipos de documento diario/mantenimiento; se implementarán antes de sus funciones.
 - Repositorio público: [rexxsalvar/mythos-dwes](https://github.com/rexxsalvar/mythos-dwes), rama `main`.
 - Tablero público vinculado al repositorio: [Mythos - Proyecto DWES](https://github.com/users/rexxsalvar/projects/1).

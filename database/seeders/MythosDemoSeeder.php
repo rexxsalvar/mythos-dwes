@@ -33,7 +33,7 @@ class MythosDemoSeeder extends Seeder
                     ['name' => 'Demo '.ucfirst($name), 'password' => Hash::make('solo-pruebas-mythos'), 'email_verified_at' => '2026-10-01 10:00:00'],
                 );
             }
-            // Demo actor names do not implement the roles or permissions of sprint 3.
+            // CompleteDataModelSeeder assigns these demo accounts their access roles.
             $experience = Experience::updateOrCreate(['slug' => 'expedicion-maldita'], [
                 'name' => 'Expedición Maldita', 'description' => 'Aventura de temática egipcia. Referencia del análisis de septiembre de 2026.',
                 'duration_minutes' => 75, 'min_players' => 2, 'max_players' => 6, 'is_active' => true,

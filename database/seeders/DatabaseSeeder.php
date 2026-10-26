@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call(AccessRolesSeeder::class);
         $this->call(MythosDemoSeeder::class);
         $this->call(CompleteDataModelSeeder::class);
     }

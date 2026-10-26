@@ -1,4 +1,4 @@
-name: Pruebas del modelo de datos
+name: Pruebas de Mythos
 
 on: [push, pull_request]
 
@@ -18,5 +18,11 @@ jobs:
       - run: composer install --no-interaction --prefer-dist
       - run: cp .env.example .env
       - run: php artisan key:generate
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
       - run: composer test
       - run: vendor/bin/pint --test

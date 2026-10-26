@@ -46,3 +46,7 @@ Las decisiones de negocio pendientes siguen identificadas en [modelo de datos](m
 ## Revisión del alcance del 20/10
 
 El alumno comunica correcciones del profesor al sprint 1; todavía no comunica corrección ni calificación de S2. Se conserva esta evidencia histórica. Los nuevos informes diario y de mantenimiento requieren añadir tipos de documento y minutos de intervención antes de sus historias. Los 15 minutos de bloqueo y 30 de preparación aprobados son reglas académicas por implementar; esta revisión documental no ejecuta migraciones ni modifica la base local. Véase la [revisión de S1](revision-sprint-1.md).
+
+## Continuidad en S3 (26/10)
+
+La evidencia anterior describe S2. El [sprint 3](sprint-3-verificacion.md) incorpora acceso web, roles y dos policies y amplía la suite a 76 casos (348 assertions). Las 43 pruebas iniciales se conservan; este trabajo no cambia el esquema ni constituye una corrección docente de S2.
