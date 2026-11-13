@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+use Carbon\CarbonImmutable;
+use DateTimeInterface;
+use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,6 +17,23 @@ class Incident extends Model
     use HasFactory;
 
     protected $fillable = ['room_id', 'game_session_id', 'reported_by', 'assigned_to', 'title', 'description', 'severity', 'status', 'resolved_at'];
+
+    #[Scope]
+    protected function requiringAttention(
+        Builder $query,
+        ?int $roomId = null,
+        ?string $severity = null,
+        ?DateTimeInterface $reservationsAfter = null,
+    ): void {
+        $query->whereIn('incidents.status', ['open', 'in_progress'])
+            ->whereIn('incidents.severity', $severity === null ? ['high', 'critical'] : [$severity])
+            ->when($roomId !== null, fn (Builder $incidents) => $incidents
+                ->whereHas('room', fn (Builder $room) => $room->whereKey($roomId)))
+            ->when($reservationsAfter !== null, fn (Builder $incidents) => $incidents
+                ->whereHas('room.gameSessions', fn (Builder $sessions) => $sessions
+                    ->where('starts_at', '>=', CarbonImmutable::instance($reservationsAfter)->utc())
+                    ->whereHas('reservations', fn (Builder $reservations) => $reservations->where('status', 'confirmed'))));
+    }
 
     protected function casts(): array
     {

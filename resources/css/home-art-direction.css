@@ -1,0 +1,183 @@
+/* Zodiac sample. Other chapters keep their approved presentation. */
+@font-face {
+    font-family: 'Mythos Zodiac Display';
+    src: url('../../public/assets/mythos/fonts/art-direction/bebas-neue-400.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Mythos Zodiac Type';
+    src: url('../../public/assets/mythos/fonts/art-direction/special-elite-400.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+/* The official distribution uses genuine static Barlow weights. */
+@font-face {
+    font-family: 'Mythos Barlow';
+    src: url('../../public/assets/mythos/fonts/art-direction/barlow-400.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Mythos Barlow';
+    src: url('../../public/assets/mythos/fonts/art-direction/barlow-600.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+}
+
+.page-home .zodiac-journey {
+    --zodiac-paper: #ece4d6;
+    --zodiac-muted: #c0b5a6;
+    --zodiac-background: #0c0a0b;
+}
+
+.page-home .zodiac-journey #zodiac-title {
+    font-family: 'Mythos Zodiac Display', 'Arial Narrow', sans-serif;
+    font-weight: 400;
+    font-size: clamp(76px, 8vw, 120px);
+    line-height: .94;
+    letter-spacing: 0;
+    text-shadow: none;
+    color: var(--zodiac-paper);
+}
+
+.page-home .zodiac-journey #zodiac-title > span {
+    color: var(--zodiac-paper);
+}
+
+.page-home .zodiac-journey .zodiac-brief h3 {
+    font-family: 'Mythos Zodiac Display', 'Arial Narrow', sans-serif;
+    font-weight: 400;
+    font-size: clamp(34px, 3.5vw, 48px);
+    line-height: 1.05;
+    letter-spacing: 0;
+    text-shadow: none;
+    color: var(--zodiac-paper);
+}
+
+.page-home .zodiac-journey .zodiac-location {
+    font-family: 'Mythos Zodiac Type', 'Courier New', monospace;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.5;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.page-home .zodiac-journey .zodiac-lead {
+    max-width: 30ch;
+    font-family: 'Mythos Zodiac Type', 'Courier New', monospace;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.55;
+    letter-spacing: 0;
+    color: var(--zodiac-paper);
+}
+
+.page-home .zodiac-journey .zodiac-brief > p {
+    max-width: 46ch;
+    font-family: 'Mythos Barlow', var(--font-sans);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.65;
+    text-align: left;
+}
+
+.page-home .zodiac-journey .zodiac-brief > .zodiac-destination {
+    font-size: 12px;
+}
+
+.page-home .zodiac-journey .zodiac-facts dt,
+.page-home .zodiac-journey .zodiac-facts dd span,
+.page-home .zodiac-journey .experience-next > span,
+.page-home .zodiac-journey .zodiac-art-note {
+    font-size: 12px;
+}
+
+.page-home .zodiac-journey .zodiac-facts dd {
+    font-family: 'Mythos Zodiac Display', 'Arial Narrow', sans-serif;
+    font-weight: 400;
+}
+
+.page-home .zodiac-journey .zodiac-facts dd span,
+.page-home .zodiac-journey .experience-next,
+.page-home .zodiac-journey .zodiac-skip,
+.page-home .zodiac-journey .zodiac-official {
+    font-family: 'Mythos Barlow', var(--font-sans);
+}
+
+.page-home .zodiac-journey .zodiac-skip,
+.page-home .zodiac-journey .zodiac-official {
+    min-height: 44px;
+    font-size: 14px;
+    color: var(--zodiac-paper);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+.page-home .zodiac-journey .zodiac-official {
+    font-weight: 600;
+    border: 2px solid #d3202a;
+}
+
+.page-home .zodiac-journey .zodiac-official:hover {
+    color: #0c0a0b;
+    background: var(--zodiac-paper);
+}
+
+.page-home .zodiac-journey .zodiac-skip:hover {
+    color: var(--zodiac-paper);
+    text-decoration-thickness: 2px;
+}
+
+.page-home .zodiac-journey :is(a, button):focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 5px;
+}
+
+@media (max-width: 760px) {
+    .page-home .zodiac-journey #zodiac-title { font-size: clamp(68px, 19vw, 92px); }
+    .page-home .zodiac-journey .zodiac-brief h3 { font-size: 34px; }
+    .page-home .zodiac-journey .zodiac-location { font-size: 12px; }
+    .page-home .zodiac-journey .zodiac-lead { font-size: 16px; }
+    .page-home .zodiac-journey .zodiac-brief > p { font-size: 16px; }
+    .page-home .zodiac-journey .zodiac-brief > .zodiac-destination { font-size: 12px; }
+}
+
+@media (forced-colors: active) {
+    .page-home .zodiac-journey { background: Canvas; color: CanvasText; }
+    .page-home .zodiac-journey #zodiac-title,
+    .page-home .zodiac-journey #zodiac-title > span,
+    .page-home .zodiac-journey .zodiac-brief h3,
+    .page-home .zodiac-journey .zodiac-lead { color: CanvasText; }
+    .page-home .zodiac-journey .zodiac-skip,
+    .page-home .zodiac-journey .zodiac-skip:hover,
+    .page-home .zodiac-journey .zodiac-official,
+    .page-home .zodiac-journey .zodiac-official:hover {
+        color: LinkText;
+        border-color: LinkText;
+        background: Canvas;
+    }
+    .page-home .zodiac-journey :is(a, button):focus-visible { outline-color: Highlight; }
+}
+
+.page-home .zodiac-journey[data-zodiac-mode='sequence'] .zodiac-arrival {
+    min-height: calc(100svh - var(--home-header-height, 0px));
+}
+
+@media (min-width: 761px) {
+    .page-home .zodiac-journey[data-zodiac-mode='sequence'] .zodiac-brief {
+        max-width: min(46%, 30rem);
+    }
+}
+
+@media (max-width: 760px) {
+    .page-home .zodiac-journey[data-zodiac-mode='sequence'] .zodiac-arrival {
+        padding-block-start: clamp(200px, 50svh, 460px);
+        background: linear-gradient(180deg, transparent 0, rgba(11, 11, 16, .12) 30svh, rgba(11, 11, 16, .88) 50svh, var(--zodiac-background) calc(50svh + 240px));
+    }
+}

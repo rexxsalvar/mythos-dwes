@@ -1,9 +1,9 @@
-<x-layout title="Entrar">
+<x-layout title="Entrar" variant="auth">
     <div class="auth-grid">
-        <div class="auth-intro"><p class="eyebrow">BIENVENIDO A MYTHOS</p><h1>Tu próxima historia<br>empieza aquí.</h1><p>Consulta tus reservas y los detalles de tu experiencia desde tu espacio personal.</p></div>
+        <div class="auth-intro"><p class="eyebrow">BIENVENIDO A MYTHOS</p><h1>Tu próxima historia<br> empieza aquí.</h1><p>Consulta tus reservas y los detalles de tu experiencia desde tu espacio personal.</p></div>
         <section class="panel auth-panel" aria-labelledby="form-title">
             <p class="eyebrow">TU CUENTA</p><h2 id="form-title">Entrar en Mythos</h2><p class="muted">Introduce tu correo y contraseña.</p>
-            <form method="POST" action="{{ route('login.store') }}" class="form-stack">
+            <form method="POST" action="{{ route('login.store') }}" class="form-stack" novalidate data-submit>
                 @csrf
                 <div><x-label for="email">Correo electrónico</x-label><x-input name="email" type="email" autocomplete="username" maxlength="255" required autofocus /></div>
                 <div><x-label for="password">Contraseña</x-label><x-input name="password" type="password" autocomplete="current-password" required /></div>

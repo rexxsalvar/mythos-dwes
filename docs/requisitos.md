@@ -1,6 +1,6 @@
 # Requisitos y alcance
 
-Revisión: 26/10/2026. Las [correcciones del profesor al sprint 1](revision-sprint-1.md) actualizan la propuesta y prevalecen sobre sus cantidades anteriores. El [enunciado de S2](sprint-2-enunciado.md) se conserva como fue recibido; todavía no hay corrección docente de S2. El [enunciado de S3](sprint-3-enunciado.md) adelanta la segunda policy y la validación/componentes existentes; su [evidencia](sprint-3-verificacion.md) distingue lo implementado. La planificación no equivale a calificación.
+Revisión: 13/11/2026. Las [correcciones de S1](revision-sprint-1.md) y los enunciados recibidos fijan el alcance. El [enunciado completo de S4](sprint-4-enunciado.md) exige cuatro scopes complejos y adelanta cuatro comandos, dos invocados desde código. Su [evidencia](sprint-4-verificacion.md) distingue la implementación del trabajo posterior. Se conserva la evidencia histórica de S2 y S3; la planificación no equivale a calificación.
 
 ## Alcance obligatorio corregido
 
@@ -9,14 +9,14 @@ Revisión: 26/10/2026. Las [correcciones del profesor al sprint 1](revision-spri
 | Propuesta, registro, Git y tablero coherentes | Nombre Mythos, exclusiones, enlaces y criterios de aceptación actualizados | 1 y revisión del 20/10; T-01 a T-06 |
 | E-R, claves, índices, migraciones, factories, seeders y pruebas iniciales | Modelo publicado: 32 tablas de negocio; relaciones 1:N, N:N y pivotes con datos propios | 2; T-07 |
 | Autenticación y roles con Laravel-permission | Cinco roles obligatorios de S3: cliente, administrador, recepción, game master y mantenimiento; implementados | 3; HU-01 |
-| Cinco policies | ReservationPolicy y GameSessionPolicy: consultas implementadas en S3; ExperiencePolicy, RoomPolicy e IncidentPolicy pendientes | 3 a 5; HU-01 a HU-09 |
+| Cinco policies | ReservationPolicy, GameSessionPolicy, ExperiencePolicy, RoomPolicy e IncidentPolicy implementadas y probadas con casos permitidos y denegados | 3-4; HU-01 a HU-09 |
 | Cinco CRUD | Experiencias, salas, sesiones, reservas e incidencias | Web 4-5; API 6; HU-02 a HU-10 |
 | FormRequest y componentes reutilizables | S3: los cuatro formularios existentes y cinco componentes; S4: futuros formularios CRUD | 3-4; T-08 |
 | Siete clases Livewire | Cinco gestores CRUD, agenda y preparación de partidas | 5; HU-06, HU-08 |
-| Siete scopes | Catálogo publicado, reservas futuras, reservas activas, disponibilidad, incidencias, tarifas vigentes y mantenimiento por periodo; al menos dos complejos | 4-5; HU-02 a HU-09 |
+| Siete scopes | Catálogo, reservas futuras/afectadas, reservas activas, disponibilidad, incidencias, tarifas y mantenimiento por periodo; cuatro consultas complejas verificadas | 4; HU-02 a HU-09 |
 | Siete recursos API | User, Experience, Room, GameSession, Reservation, Rate e Incident | 6; HU-10 |
 | Autorización API | User, Reservation e Incident siempre autenticados; escrituras de experiencias y salas administrativas; mismas reglas que en web | 6; HU-10 |
-| Siete comandos Artisan | Caducidad, recordatorios, tres informes, resultados y revisión de reservas afectadas; informe mensual invocado también desde código | 7; T-09 |
+| Siete comandos Artisan | S4 implementa caducidad, revisión de afectadas y extracción mensual/diaria; tres se invocan desde administración. S7 completa recordatorios, resultados y mantenimiento y conecta automatizaciones; los PDF se completan en S8 | 4 y 7-8; T-09 |
 | Cinco pares evento-listener | Confirmación, cancelación, incidencia, finalización de partida y solicitud de documento | 7; HU-11 |
 | Cinco jobs, tres en cola | Correo al cliente, aviso interno y documento en cola; caducidad y revisión de reservas de forma síncrona | 7; HU-11, T-09 |
 | Cinco correos | Confirmación, recordatorio, cancelación, incidencia interna y resultado | 7; HU-11 |
@@ -36,9 +36,10 @@ Los nombres de clases, informes y automatizaciones y sus criterios comprobables 
 - Preparación de **30 minutos antes del inicio**. Sala y game master se ocupan en `[inicio - 30 minutos, fin)`; se rechazan intersecciones incluso con escrituras concurrentes.
 - Estados: pending, confirmed, completed, cancelled y expired. Caducidad cada minuto y comprobación transaccional al reservar o confirmar; no se depende solo del planificador.
 - Al confirmar se conservan precio total del grupo, moneda y número de participantes. Editar Rate no altera el histórico de la reserva.
+- Cancelación de confirmadas con al menos 24 horas de antelación. Las nuevas reservas conservan la versión de condiciones; no se aplica retroactivamente a registros sin condiciones conocidas.
 - Las incidencias críticas bloquean nuevas reservas e inicio; las confirmadas afectadas se revisan. Resolver una incidencia no libera otros bloqueos activos.
 
-Los 15 y 30 minutos fueron aprobados por el alumno el 20/10 como decisiones académicas, no como condiciones reales del negocio. Su implementación funcional sigue pendiente de las historias correspondientes.
+Los 15 y 30 minutos fueron aprobados por el alumno el 20/10 y las 24 horas de cancelación el 13/11. Son decisiones académicas, no condiciones comerciales verificadas de Mythos. Están implementadas en los servicios de S4. La caducidad tiene entrada en el planificador; su ejecución periódica requiere mantener activo dicho proceso.
 
 ## Ampliaciones y exclusiones
 
@@ -48,6 +49,6 @@ Pagos online, QR, pasaporte de escapista, logística física de bonos y publicac
 
 ## Decisiones e impactos pendientes
 
-- Plazo de cancelación, condiciones definitivas de confirmación/cobro, inventario inicial real, criterio del diploma y penalizaciones de pistas.
+- Condiciones definitivas de cobro, inventario inicial real, criterio del diploma y penalizaciones de pistas. La confirmación manual de S4 no acredita haber cobrado.
 - Comprobar el nombre Mythos en el registro externo del centro; su cambio no se da por realizado desde este repositorio.
 - Antes de HU-09/HU-12: nueva migración para minutos de intervención y tipos `daily_report` y `maintenance_report` en documentos. No se cambian datos ni migraciones de S2 con esta revisión documental.

@@ -1,16 +1,19 @@
 # Tablero Scrum - Mythos
 
-Revisión: 26/10/2026. Sprint activo: **3, del 19/10 al 01/11**. Objetivo: acceso web, rutas, cinco roles, dos policies y flujo validado, conforme al [enunciado S3](sprint-3-enunciado.md).
+Revisión local: 13/11/2026. Sprint activo: **4, del 02/11 al 15/11**. Objetivo: cinco policies, siete scopes con cuatro consultas complejas, cuatro comandos y servicios de aplicación, conforme al [enunciado completo](sprint-4-enunciado.md). [Evidencia S4](sprint-4-verificacion.md).
 
 Tablero existente: [GitHub Projects](https://github.com/users/rexxsalvar/projects/1). Se mantienen las 28 tarjetas. Criterios: [backlog](backlog.md), [revisión S1](revision-sprint-1.md) y [evidencia S3](sprint-3-verificacion.md).
 
 | Backlog | Por hacer | En curso | En revisión | Bloqueado | Hecho |
 |---|---|---|---|---|---|
-| HU-02 a HU-16; T-08 a T-12 | — | — | — | — | T-01 a T-06: entregables de S1 |
+| HU-06 a HU-16; T-09 a T-12 | — | — | HU-02: núcleo web verificado; traducción de ficha pendiente con HU-13 | — | T-01 a T-06: entregables de S1 |
 | | | | | | T-07: modelo y comprobaciones S2 |
 | | | | | | HU-01: acceso, permisos y flujo validado S3 |
+| | | | | | HU-03, HU-04, HU-05 y T-08: agenda, reservas y validación S4 |
 
-Resultado: ocho elementos con evidencia y veinte pendientes. T-08 tiene una parte implementada en S3, pero sigue abierta para validar y componer los futuros formularios CRUD de S4. HU-08 conserva preparación/resultados y ampliará las acciones de GameSessionPolicy; no se cierra por tener la consulta protegida.
+Resultado local: doce elementos con evidencia, uno en revisión y quince en backlog. HU-02 conserva pendiente la traducción comprometida para S8; sus operaciones web de S4 están verificadas. HU-08 conserva preparación y resultados, reutilizando las autorizaciones previstas en GameSessionPolicy. Esta tabla no acredita cambios en las tarjetas remotas de GitHub Projects.
+
+T-09 conserva el cierre global en S7, con cuatro de sus siete comandos ya implementados en S4. Caducidad, revisión y extracción mensual tienen acciones administrativas; el resumen diario se ejecuta desde Artisan. Sus pruebas están en OperationalCommandsTest y ActivityReportCommandsTest.
 
 ## Reglas de uso
 

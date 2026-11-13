@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\GameSession;
 use App\Models\Incident;
 use App\Models\Reservation;
+use App\Models\Room;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -25,6 +26,7 @@ class DashboardController extends Controller
                 'Sesiones' => GameSession::count(), 'Incidencias' => Incident::count(),
             ],
             'roles' => Role::withCount('users')->orderBy('name')->get(),
+            'rooms' => Room::orderBy('name')->get(['id', 'name']),
         ]);
     }
 }

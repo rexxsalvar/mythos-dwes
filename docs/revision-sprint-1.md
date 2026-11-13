@@ -4,6 +4,8 @@ Fecha: 20/10/2026. Fuente: seis correcciones del profesor comunicadas por el alu
 
 Este documento fija el alcance y sus criterios de aceptación. La implementación se reparte entre los diez sprints del [calendario](calendario.md); una función planificada no se considera terminada por aparecer aquí.
 
+Seguimiento del 13/11/2026, sin sustituir la corrección original del 20/10: el alumno aprobó cancelación con al menos 24 horas de antelación. El [enunciado completo de S4](sprint-4-enunciado.md) exige cinco policies, siete scopes con cuatro consultas complejas y cuatro comandos, dos invocados desde código. Las referencias a decisiones pendientes o a planificación futura de este documento se interpretan junto con la [evidencia actual de S4](sprint-4-verificacion.md).
+
 ## 1. Correspondencia con las correcciones
 
 | Corrección | Compromiso revisado | Evidencia de aceptación futura |

@@ -1,9 +1,9 @@
-<x-layout title="Crear cuenta">
+<x-layout title="Crear cuenta" variant="auth">
     <div class="auth-grid">
-        <div class="auth-intro"><p class="eyebrow">FORMA PARTE DE LA AVENTURA</p><h1>Un lugar para<br>tus experiencias.</h1><p>Crea tu cuenta de cliente para consultar tus reservas y mantener tus datos de contacto al día.</p></div>
+        <div class="auth-intro"><p class="eyebrow">FORMA PARTE DE LA AVENTURA</p><h1>Un lugar para<br> tus experiencias.</h1><p>Crea tu cuenta de cliente para consultar tus reservas y mantener tus datos de contacto al día.</p></div>
         <section class="panel auth-panel" aria-labelledby="form-title">
             <p class="eyebrow">NUEVA CUENTA</p><h2 id="form-title">Crear cuenta</h2>
-            <form method="POST" action="{{ route('register.store') }}" class="form-stack">
+            <form method="POST" action="{{ route('register.store') }}" class="form-stack" novalidate data-submit>
                 @csrf
                 <div><x-label for="name">Nombre</x-label><x-input name="name" autocomplete="name" maxlength="255" required /></div>
                 <div><x-label for="email">Correo electrónico</x-label><x-input name="email" type="email" autocomplete="email" maxlength="255" required /></div>

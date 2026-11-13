@@ -1,6 +1,6 @@
 # Product Backlog
 
-Revisión: 26/10/2026, por las [correcciones de S1](revision-sprint-1.md) y el [enunciado de S3](sprint-3-enunciado.md). Se conservan 16 historias y 12 tareas, sus identificadores y las fechas oficiales. P1 = obligatorio o núcleo; P2 = complemento de producto; P3 = ampliación opcional. El [tablero](tablero.md) refleja el seguimiento; HU-01 tiene evidencia de implementación y las demás historias siguen pendientes.
+Revisión: 13/11/2026. Se conservan 16 historias y 12 tareas, sus identificadores y las fechas oficiales. P1 = obligatorio o núcleo; P2 = complemento de producto; P3 = ampliación opcional. El [tablero](tablero.md) distingue la evidencia de S3 y la [implementación local de S4](sprint-4-verificacion.md) del trabajo posterior.
 
 ## Tareas del sprint 1
 
@@ -36,6 +36,8 @@ Revisión: 26/10/2026, por las [correcciones de S1](revision-sprint-1.md) y el [
 - ES/EN de la ficha e idioma disponible para jugar tratados por separado; datos demo sin clientes reales.
 - Editar Rate no recalcula el precio ni los participantes de reservas confirmadas.
 
+Estado S4 del 13/11: núcleo del catálogo web implementado y verificado. La interfaz y el contenido bilingües continúan pendientes con HU-13 en S8; no se presenta la ficha actual como bilingüe.
+
 ### HU-03 · Salas y sesiones
 
 **P1 · Sprint 4 · Depende de HU-02.** Como administrador, quiero ofrecer sesiones que podamos atender.
@@ -44,6 +46,8 @@ Revisión: 26/10/2026, por las [correcciones de S1](revision-sprint-1.md) y el [
 - Preparación académica de 30 minutos antes del inicio: ocupación de sala y responsable en [inicio - 30 minutos, fin).
 - Rechazar intersecciones de sala o game master incluso con dos altas/cambios concurrentes; permitir límites contiguos.
 - No ofrecer sesiones canceladas, en preparación ya iniciada o afectadas por bloqueos/incidencias críticas.
+
+Estado S4 del 13/11: implementada y verificada con `ScheduleSession` y `CatalogService`. Las sesiones con historial no se reprograman y el archivo conserva las relaciones.
 
 ### HU-04 · Reservar una partida
 
@@ -56,6 +60,8 @@ Revisión: 26/10/2026, por las [correcciones de S1](revision-sprint-1.md) y el [
 - Al confirmar conservar players, total_cents, currency, tarifa y fecha; posteriores cambios de Rate no recalculan el histórico.
 - Scopes upcoming y activeAt usados en consultas funcionales. La limpieza al reservar no depende solo del comando periódico.
 
+Estado S4 del 13/11: creación, caducidad, modificación pendiente y confirmación implementadas. El cierre de la partida y el estado completed pertenecen al flujo HU-08 de S5.
+
 ### HU-05 · Consultar y cancelar reservas
 
 **P1 · Sprint 4 · Depende de HU-04.** Como cliente, quiero consultar mi reserva y cancelarla según las condiciones.
@@ -64,7 +70,9 @@ Revisión: 26/10/2026, por las [correcciones de S1](revision-sprint-1.md) y el [
 - Validar estado y antelación acordada antes de cancelar; conservar la reserva y registrar la transición.
 - Liberar la sesión solo si no persisten bloqueos y sigue siendo ofertable; cancelación y confirmación concurrentes no producen estados contradictorios.
 - Cambios de grupo/importe por operación autorizada y con antes/después; no aplicar cambios de catálogo a reservas confirmadas automáticamente.
-- El plazo concreto de cancelación sigue pendiente de acuerdo antes de implementar esa validación.
+- Plazo académico aprobado el 13/11: al menos 24 horas antes del inicio para confirmadas; pendientes mientras su bloqueo siga vigente. Conservar versión de condiciones; no aplicarlas retroactivamente a reservas sin condiciones conocidas.
+
+Estado S4 del 13/11: implementada y verificada. Los cambios de grupo solo se permiten en pendientes, por personal autorizado y con registro del antes/después.
 
 ### HU-06 · Gestión interactiva
 
@@ -166,8 +174,8 @@ Revisión: 26/10/2026, por las [correcciones de S1](revision-sprint-1.md) y el [
 | ID | Prioridad / sprint | Trabajo | Criterio de aceptación |
 |---|---|---|---|
 | T-07 | P1 / 2 | Modelo de datos | E-R justificado, claves/índices, al menos siete modelos preparados, relaciones y pivote desde código, factories, seeders, pruebas iniciales y reconstrucción. Evidencia del 18/10 conservada; impactos de la corrección de S1 anotados, no presentados como corrección docente de S2. |
-| T-08 | P1 / 3-4 | Validación y componentes | Base implementada en S3 para registro, acceso, perfil y agenda, con cinco componentes y errores junto al campo. Pendiente en S4: aplicar FormRequest y componentes a los nuevos formularios CRUD; la tarea completa sigue abierta. |
-| T-09 | P1 / 7 | Siete comandos Artisan | reservations:expire, reservations:remind, reports:monthly, reports:daily, reports:maintenance, sessions:send-results e incidents:review-reservations. Informe mensual invocado desde código autorizado; funcionamiento, errores y reejecución comprobados. |
+| T-08 | P1 / 3-4 | Validación y componentes | Base de S3 ampliada y verificada en S4 para experiencias, salas, sesiones y reservas. FormRequest en los formularios nuevos de más de dos campos y componentes reutilizados. |
+| T-09 | P1 / 4 y 7-8 | Siete comandos Artisan | S4 implementa reservations:expire, incidents:review-reservations, reports:monthly y reports:daily; tres invocados desde administración y con pruebas. Mensual/diario extraen JSON. S7 completa reservations:remind, reports:maintenance y sessions:send-results y conecta automatizaciones; las plantillas PDF se completan en S8. La tarea global continúa abierta. |
 | T-10 | P1 / 9 | Pest y cobertura obligatoria | Informe de al menos 85 % del código de aplicación. Comprobar policies, aforo, caducidad, concurrencia, preparación, precio/grupo históricos, cinco correos/colas, tres informes y ES/EN. No presentar un recuento de pruebas como porcentaje medido. |
 | T-11 | P1 / 10 | Cierre técnico | Contrato API final y revisión del inventario corregido completo; README centrado en el proyecto y enlaces; versión candidata, historial conservado y mínimos antes que extras. |
 | T-12 | P1 / Final | Demo y entrega | Integración, recorridos de permisos/reserva/informes/idiomas, guion de defensa y enlaces; entrega oficial 12/02/2027. Comprobar nombre Mythos en el registro docente. |
@@ -177,3 +185,5 @@ Revisión: 26/10/2026, por las [correcciones de S1](revision-sprint-1.md) y el [
 Una tarjeta funcional pasa a Hecho cuando cumple sus criterios con código y evidencia, sin defectos que impidan usarla. Documentar una función no la implementa. En las tareas documentales se revisan contenido, enlaces y maquetación. Las ampliaciones esperan a los mínimos y las correcciones no crean tarjetas duplicadas.
 
 El enunciado de S3 del 26/10 prevalece sobre la previsión de una sola policy y validación/componentes en S4. Se conserva la evidencia de S2 y no se completan otras historias por disponer de sus páginas de consulta.
+
+El enunciado completo de S4 recibido el 13/11 fija cuatro comandos y cuatro scopes complejos ya verificados. El inventario final conserva siete comandos; se adelantan cuatro y no se crean tarjetas adicionales. Los servicios reutilizables de revisión y actividad no completan los trabajos en cola de HU-11 ni los PDF de HU-12.

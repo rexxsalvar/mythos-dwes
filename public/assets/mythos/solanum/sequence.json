@@ -1,0 +1,16 @@
+{
+  "desktop": {
+    "count": 144,
+    "width": 1600,
+    "height": 1000,
+    "prefix": "desktop/frame-",
+    "revision": "solanum-2"
+  },
+  "mobile": {
+    "count": 72,
+    "width": 600,
+    "height": 1250,
+    "prefix": "mobile/frame-",
+    "revision": "solanum-2"
+  }
+}

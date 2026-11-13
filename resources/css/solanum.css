@@ -1,0 +1,52 @@
+.solanum-journey {
+    --virus-glass: #efe0ba;
+    --virus-muted: #d1cbbd;
+    --virus-background: #191911;
+    --sequence-action-height: 78svh;
+}
+
+.solanum-journey #solanum-title em {
+    color: var(--accent);
+    font-style: normal;
+}
+
+.solanum-journey .virus-poster img,
+.solanum-journey .virus-canvas {
+    object-position: center;
+}
+
+.solanum-journey .virus-arrival {
+    background:
+        linear-gradient(90deg, #10110e 0%, rgba(16, 17, 14, .76) 46%, rgba(16, 17, 14, .12)),
+        url("../../public/assets/mythos/solanum/checkpoint.webp") 63% center / cover;
+}
+
+.solanum-journey[data-sequence-mode="sequence"] .virus-arrival {
+    background: linear-gradient(90deg, rgba(16, 17, 14, .78), rgba(16, 17, 14, .26) 68%);
+}
+
+@media (max-width: 760px) {
+    .solanum-journey #solanum-title {
+        font-size: clamp(68px, 22vw, 130px);
+    }
+
+    .solanum-journey .virus-stage::after {
+        background:
+            linear-gradient(180deg, rgba(11, 11, 16, .93), rgba(11, 11, 16, .78) 26%, transparent 64%, rgba(11, 11, 16, .83)),
+            linear-gradient(90deg, rgba(11, 11, 16, .18), transparent 80%);
+    }
+}
+
+@media (forced-colors: active) {
+    .solanum-journey .virus-arrival,
+    .solanum-journey[data-sequence-mode="sequence"] .virus-arrival {
+        background: Canvas;
+    }
+}
+
+@media (540px <= width <= 760px) {
+    .solanum-journey .virus-poster img,
+    .solanum-journey .virus-canvas {
+        object-position: center 64%;
+    }
+}

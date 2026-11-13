@@ -16,14 +16,16 @@ class AccessRolesSeeder extends Seeder
 
         DB::transaction(function () {
             $roles = [
-                'cliente' => ['profile.update-own', 'reservations.view-own'],
-                'recepcion' => ['profile.update-own', 'reservations.view-all', 'sessions.view-all'],
-                'game_master' => ['profile.update-own', 'sessions.view-assigned'],
-                'mantenimiento' => ['profile.update-own', 'incidents.view-assigned'],
+                'cliente' => ['profile.update-own', 'reservations.view-own', 'reservations.manage-own'],
+                'recepcion' => ['profile.update-own', 'reservations.view-all', 'sessions.view-all', 'reservations.manage-all'],
+                'game_master' => ['profile.update-own', 'sessions.view-assigned', 'sessions.operate-assigned'],
+                'mantenimiento' => ['profile.update-own', 'incidents.view-assigned', 'incidents.report', 'incidents.manage-assigned'],
                 'administrador' => [
                     'profile.update-own', 'reservations.view-own', 'reservations.view-all',
                     'sessions.view-assigned', 'sessions.view-all',
                     'incidents.view-assigned', 'incidents.view-all', 'administration.view',
+                    'experiences.manage', 'rooms.manage', 'rooms.operate', 'sessions.manage',
+                    'reservations.manage-own', 'reservations.manage-all', 'incidents.report', 'incidents.manage-all',
                 ],
             ];
 

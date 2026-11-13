@@ -1,7 +1,7 @@
 <x-layout title="Mi perfil">
     <div class="page-heading"><p class="eyebrow">MI CUENTA</p><h1>Tus datos, al día.</h1><p class="muted">Revisa cómo podemos contactar contigo.</p></div>
     <section class="panel narrow-panel">
-        <form method="POST" action="{{ route('profile.update') }}" class="form-stack">
+        <form method="POST" action="{{ route('profile.update') }}" class="form-stack" novalidate data-submit>
             @csrf @method('PATCH')
             <div><x-label for="name">Nombre</x-label><x-input name="name" :value="$user->name" autocomplete="name" maxlength="255" required /></div>
             <div><x-label for="email">Correo electrónico</x-label><x-input name="email" type="email" :value="$user->email" autocomplete="email" maxlength="255" required /></div>

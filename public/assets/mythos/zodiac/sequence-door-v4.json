@@ -1,0 +1,42 @@
+{
+  "desktop": {
+    "count": 144,
+    "width": 1600,
+    "height": 1000,
+    "prefix": "desktop/frame-",
+    "revision": "case-file-3",
+    "door": {
+      "count": 33,
+      "width": 1920,
+      "height": 1200,
+      "prefix": "door-v4/desktop/frame-",
+      "revision": "door-v4",
+      "hitArea": [
+        0.453125,
+        0.305,
+        0.55,
+        0.6
+      ]
+    }
+  },
+  "mobile": {
+    "count": 72,
+    "width": 600,
+    "height": 1250,
+    "prefix": "mobile/frame-",
+    "revision": "case-file-3",
+    "door": {
+      "count": 33,
+      "width": 900,
+      "height": 1875,
+      "prefix": "door-v4/mobile/frame-",
+      "revision": "door-v4",
+      "hitArea": [
+        0.3350911509346515,
+        0.29714840266411235,
+        0.6724583278919273,
+        0.6053496430328236
+      ]
+    }
+  }
+}

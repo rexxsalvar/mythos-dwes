@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -12,6 +14,12 @@ class Experience extends Model
     use HasFactory;
 
     protected $fillable = ['archived_at', 'cover_image_path', 'name', 'slug', 'description', 'duration_minutes', 'min_players', 'max_players', 'is_active'];
+
+    #[Scope]
+    protected function published(Builder $query): void
+    {
+        $query->where('experiences.is_active', true)->whereNull('experiences.archived_at');
+    }
 
     protected function casts(): array
     {

@@ -109,7 +109,7 @@ Referencias de los paquetes: [Spatie, instalación](https://spatie.be/docs/larav
 
 ## Decisiones pendientes, sin valores inventados
 
-El alumno aprueba el 20/10 caducidad académica de 15 minutos y preparación de 30 minutos antes de la sesión. Su activación funcional sigue pendiente; los borradores existentes no se cambian. Siguen pendientes cancelación, condiciones de confirmación/cobro, inventario inicial real, criterio de diploma, penalizaciones y condiciones definitivas de bono. `booking_policy_versions` deja esas columnas nulas en un borrador que no se asigna a reservas. `null` no significa cero ni ausencia de restricciones comerciales.
+El alumno aprueba el 20/10 caducidad académica de 15 minutos y preparación de 30 minutos antes de la sesión, y el 13/11 cancelación de confirmadas con al menos 24 horas de antelación. S4 activa esas reglas en los servicios y conserva una versión de condiciones para cada reserva nueva. Los borradores y las condiciones de reservas anteriores no se reescriben. Siguen pendientes condiciones de cobro, inventario inicial real, criterio de diploma, penalizaciones y condiciones definitivas de bono. `null` en los borradores o registros históricos no significa cero ni ausencia de restricciones comerciales.
 
 Los idiomas de juego y traducciones son conceptos distintos. Se preparan ES/EN conforme al proyecto; los textos ingleses de los seeders son demostrativos, no una traducción comercial aprobada.
 

@@ -90,7 +90,7 @@ test('maintenance queries hide other technicians incidents even through direct U
 test('access seeding is idempotent and preserves users and their assignments', function () {
     $client = User::factory()->create()->assignRole('cliente');
     $this->seed(AccessRolesSeeder::class);
-    expect(Role::count())->toBe(5)->and(Permission::count())->toBe(8)
+    expect(Role::count())->toBe(5)->and(Permission::count())->toBe(18)
         ->and(User::count())->toBe(1)->and($client->fresh()->getRoleNames()->all())->toBe(['cliente'])
         ->and($client->fresh()->can('administration.view'))->toBeFalse();
 });
