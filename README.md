@@ -2,7 +2,7 @@
 
 Aplicación de reservas y gestión para el negocio de escape rooms Mythos, en Murcia. Proyecto individual del grado de Desarrollo de Aplicaciones Web.
 
-## Estado · 13/11/2026
+## Estado · 16/11/2026
 
 Sprint 1: propuesta y planificación revisadas con las correcciones del profesor. Sprint 2: Laravel 13 con SQLite y modelo publicado de 32 tablas de negocio, más permisos, tokens e infraestructura. Sprint 3: autenticación, cinco roles, perfil validado y consultas protegidas. Sprint 4: cinco policies, siete scopes con cuatro consultas complejas, cuatro comandos y servicios reutilizables; tres comandos tienen acciones administrativas. Incluye formularios web, cancelación, precio histórico y control de concurrencia. El repositorio conserva también la interfaz y los recursos de todas las animaciones; las evidencias distinguen la verificación técnica de la entrega docente.
 
@@ -18,6 +18,7 @@ Sprint 1: propuesta y planificación revisadas con las correcciones del profesor
 | Enunciado actualizado del profesor | [Sprint 2](docs/sprint-2-enunciado.md) |
 | Enunciado de acceso, rutas y validación | [Sprint 3](docs/sprint-3-enunciado.md) |
 | Implementación y demostración del acceso | [Evidencia del sprint 3](docs/sprint-3-verificacion.md) |
+| Revisión docente y preparación de la defensa | [Corrección del sprint 3](docs/sprint-3-correccion.md) |
 | Autorización, scopes, agenda y reservas | [Evidencia del sprint 4](docs/sprint-4-verificacion.md) |
 | Lista completa exigida para el sprint 4 | [Enunciado del sprint 4](docs/sprint-4-enunciado.md) |
 | Modelo completo y diagramas E-R por áreas | [Modelo de datos](docs/modelo-datos.md) |
@@ -37,6 +38,7 @@ El enunciado de S3 exige y aplica los cinco roles: cliente, recepción, game mas
 
 - Propuesta, backlog y calendario revisados por las correcciones de S1 y el enunciado de S3. Todavía no se ha recibido corrección docente de S2.
 - Evidencia histórica de HU-01 conservada en S3. En S4 se amplían validación y componentes a catálogo, salas, agenda y reservas; las comprobaciones actuales se detallan en su evidencia.
+- Corrección docente de S3 recibida el 16/11: superada técnicamente y sin bloqueos del núcleo, pendiente de explicar una decisión de acceso y una validación en defensa. La valoración se refiere a las 76 pruebas y 348 comprobaciones del ZIP de S3.
 - Verificación local de S4: 137 pruebas y 646 assertions, formato PHP correcto y recursos compilados. La ficha bilingüe sigue vinculada a HU-13; el resto de funciones posteriores mantiene su calendario.
 - Impactos de datos pendientes: minutos de intervención de mantenimiento y tipos de documento diario/mantenimiento; se implementarán antes de sus funciones.
 - Repositorio público: [rexxsalvar/mythos-dwes](https://github.com/rexxsalvar/mythos-dwes), rama `main`.

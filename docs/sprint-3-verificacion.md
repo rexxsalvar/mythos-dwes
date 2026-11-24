@@ -2,6 +2,8 @@
 
 Implementación: 26/10/2026. Periodo docente: 19/10 a 01/11/2026. Referencia: [enunciado recibido](sprint-3-enunciado.md). HU-01 cubre el acceso; T-08 adelanta los componentes y la validación de los formularios existentes, manteniendo pendiente su integración con futuros CRUD.
 
+Revisión docente del 16/11/2026: **superada técnicamente, pendiente de defensa**, sin bloqueos del núcleo de S3. El profesor verificó las 76 pruebas y 348 comprobaciones de esta entrega. Se conserva esta evidencia histórica; el incremento de S4 tiene su propia documentación. Véase la [corrección y preparación de la defensa](sprint-3-correccion.md).
+
 ## Correspondencia con el enunciado
 
 | Criterio | Implementación |
