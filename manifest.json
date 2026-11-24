@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "created_date": "2026-11-24",
+  "source_commit": "3e128a5600962f77e1b1e6c9e573ace194b67875",
+  "archive_name": "Mythos-Completo-2026-11-24.zip.gpg",
+  "archive_sha256": "506666a33cd9c561d52481b7c54c24952c52b2866e65d6bbb2eee1e34b8d8db6",
+  "zip_sha256": "3f78f10b801eda1b44818657a52d2ffb157c631b02bad482b70095d7da464f60",
+  "encryption": "OpenPGP AES256",
+  "files": 18748,
+  "source_bytes": 594988837,
+  "parts": [
+    {
+      "file": "Mythos-Completo-2026-11-24.zip.gpg.part001",
+      "bytes": 33554432,
+      "sha256": "383a6bf271d2ff372bb8c927b092c2f294690c064b64decf7322258d0401447c"
+    },
+    {
+      "file": "Mythos-Completo-2026-11-24.zip.gpg.part002",
+      "bytes": 33554432,
+      "sha256": "cfb0d15bb95e9fdb73cf653d871341aca1203984f1930ffa22c7d67b394f24e7"
+    },
+    {
+      "file": "Mythos-Completo-2026-11-24.zip.gpg.part003",
+      "bytes": 33554432,
+      "sha256": "535f90f387539551d3a8ab50d88e4a7a990836cfa53c9111519a4f8d5c2b8e93"
+    },
+    {
+      "file": "Mythos-Completo-2026-11-24.zip.gpg.part004",
+      "bytes": 33554432,
+      "sha256": "a0bf716758ac9de2b76ccdcf0324d2db2c39218fb3e79233579ed4bf719966f2"
+    },
+    {
+      "file": "Mythos-Completo-2026-11-24.zip.gpg.part005",
+      "bytes": 33554432,
+      "sha256": "70ac767dc6ea920fe7d8291f553781bfe534bcca84a9c99d6865669cf3225616"
+    },
+    {
+      "file": "Mythos-Completo-2026-11-24.zip.gpg.part006",
+      "bytes": 33554432,
+      "sha256": "bad8e63d69bdf4c775cb74ff432772f4cb9436b2f2de4923c9ea5171da1774ea"
+    },
+    {
+      "file": "Mythos-Completo-2026-11-24.zip.gpg.part007",
+      "bytes": 33554432,
+      "sha256": "3d786af3b8b10222586d23c0010ce2879e87cb37bc320390e69e6dbc769a80a8"
+    },
+    {
+      "file": "Mythos-Completo-2026-11-24.zip.gpg.part008",
+      "bytes": 33554432,
+      "sha256": "4d54ecd36869ba9ce7c2d5d5294bbe070b68d7d8c37fa26bbbe2c03ec7b116ab"
+    },
+    {
+      "file": "Mythos-Completo-2026-11-24.zip.gpg.part009",
+      "bytes": 33554432,
+      "sha256": "b886e661fceee49728d665fc64b44658b8dab961e374dd2fd88b34c0fec2978b"
+    },
+    {
+      "file": "Mythos-Completo-2026-11-24.zip.gpg.part010",
+      "bytes": 33554432,
+      "sha256": "acfda4255511f1968875e45ecaee2382c42331cc1bd8f2b0b6cf3d4f7b8b4ab8"
+    },
+    {
+      "file": "Mythos-Completo-2026-11-24.zip.gpg.part011",
+      "bytes": 33554432,
+      "sha256": "b90ab6a1a9270d09257fb1a9a146f678890de27c31bb41c01b83f32b97fae2fa"
+    },
+    {
+      "file": "Mythos-Completo-2026-11-24.zip.gpg.part012",
+      "bytes": 33554432,
+      "sha256": "57c14b25db518757a5954149692604443fd61353ec4617a7189ce6a9edfaa898"
+    },
+    {
+      "file": "Mythos-Completo-2026-11-24.zip.gpg.part013",
+      "bytes": 33554432,
+      "sha256": "a6c5eb21b8af69b85883496ba8726fb4b796af62d76d5613437ce882d03a4a5c"
+    },
+    {
+      "file": "Mythos-Completo-2026-11-24.zip.gpg.part014",
+      "bytes": 33554432,
+      "sha256": "01f8e7ceaf49dded7913904be1b9259705d0fae9458a3e52b021e5328c22247e"
+    },
+    {
+      "file": "Mythos-Completo-2026-11-24.zip.gpg.part015",
+      "bytes": 33554432,
+      "sha256": "b0e440bacde7ac8ae3ae2961e157197d8cf02253b7786000fb499deda9ab2a36"
+    },
+    {
+      "file": "Mythos-Completo-2026-11-24.zip.gpg.part016",
+      "bytes": 21353859,
+      "sha256": "b7a00ec0052cd129597c2f42b2bd5b445e89f1417788bbe6e5d82fff48dd4cd0"
+    }
+  ]
+}

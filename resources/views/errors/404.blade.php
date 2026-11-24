@@ -1,1 +1,0 @@
-<x-layout title="Página no encontrada"><section class="panel error-panel"><span class="error-code" aria-hidden="true">404</span><p class="eyebrow">PÁGINA NO ENCONTRADA</p><h1>No hemos encontrado lo que buscas.</h1><p>Comprueba la dirección o vuelve al inicio.</p><a class="button" href="{{ route('home') }}">Volver al inicio</a></section></x-layout>

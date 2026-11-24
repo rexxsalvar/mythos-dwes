@@ -1,0 +1,40 @@
+MYTHOS · COPIA COMPLETA DEL 24/11/2026
+
+En el PC nuevo instala Git para Windows, PHP 8.4, Composer y Node.js 24.
+Git para Windows incluye GPG en su carpeta usr\bin. Tambien puedes instalar
+GnuPG e indicar su ejecutable con -GpgPath.
+
+1. Abre PowerShell y descarga esta rama de respaldo.
+
+   git clone --single-branch --branch codex/mudanza-2026-11-24 https://github.com/rexxsalvar/mythos-dwes.git Mythos-Respaldo
+   cd Mythos-Respaldo
+
+2. Ejecuta la restauracion con una carpeta de destino nueva o vacia.
+
+   powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\restaurar.ps1 -Destino "C:\Proyectos\Mythos"
+
+   Si GPG esta en otra ubicacion, anade al comando, por ejemplo,
+   -GpgPath "C:\Program Files\Git\usr\bin\gpg.exe"
+
+3. Escribe la contrasena del respaldo cuando se solicite. Se entrega por el
+   chat o se guarda en un archivo local aparte. Conserva esa clave fuera de Git.
+   La entrada de la contrasena queda oculta. El script comprueba los hashes
+   de las partes, del archivo reconstruido y del ZIP antes de extraerlo.
+
+4. Abre la carpeta restaurada en PhpStorm. Contiene el proyecto, su historial
+   .git, .env, la base de datos SQLite, dependencias y recursos del momento
+   de la copia. Conserva juntos ese APP_KEY y esa base de datos.
+
+5. Desde la carpeta restaurada ejecuta estos comandos.
+
+   php artisan view:clear
+   php artisan serve --host=127.0.0.1 --port=8030
+
+   Abre http://127.0.0.1:8030 en el navegador. Para seguir editando los recursos
+   de interfaz, abre otra terminal en la misma carpeta y ejecuta npm run dev.
+
+La copia conserva el estado de la aplicacion. Evita composer setup,
+php artisan key:generate y php artisan migrate:fresh durante esta restauracion.
+
+Si una extraccion se interrumpe, el script conserva los archivos que haya
+extraido. Para reintentar usa otra carpeta nueva o vacia.
