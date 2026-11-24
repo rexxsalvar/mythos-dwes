@@ -1,40 +1,102 @@
-MYTHOS · COPIA COMPLETA DEL 24/11/2026
+RESTAURAR MYTHOS EN OTRO PC CON WINDOWS
+Copia completa del 24 de noviembre de 2026
 
-En el PC nuevo instala Git para Windows, PHP 8.4, Composer y Node.js 24.
-Git para Windows incluye GPG en su carpeta usr\bin. Tambien puedes instalar
-GnuPG e indicar su ejecutable con -GpgPath.
+Necesitas Windows, unos 3 GB libres y la clave del respaldo que te
+facilitará quien te ha enviado esta guía. La clave se comparte por separado.
 
-1. Abre PowerShell y descarga esta rama de respaldo.
+1. DESCARGA LOS PROGRAMAS
 
-   git clone --single-branch --branch codex/mudanza-2026-11-24 https://github.com/rexxsalvar/mythos-dwes.git Mythos-Respaldo
+   Git para Windows incluye GPG, que descifra la copia. Instálalo con la
+   ruta predeterminada para que el restaurador lo encuentre automáticamente.
+   https://git-scm.com/install/windows
+
+   Laravel Herd para Windows proporciona PHP y Composer. En las preferencias
+   de Herd, instala PHP 8.4 y selecciónalo en el menú de la bandeja de Windows.
+   Abre una ventana nueva de PowerShell y comprueba con "php -v" que tienes
+   PHP 8.4.1 o una revisión posterior de la serie 8.4.
+   https://herd.laravel.com/windows
+   https://herd.laravel.com/docs/windows/technology/php-versions
+
+   Para editar la interfaz o volver a compilarla, usa Node.js 24 con npm.
+   https://nodejs.org/en/download
+
+   PhpStorm es opcional para abrir el código.
+   https://www.jetbrains.com/phpstorm/download/#section=windows
+
+2. DESCARGA LA COPIA COMPLETA
+
+   Abre este enlace para descargar en un ZIP los 16 fragmentos cifrados,
+   el manifiesto y el restaurador. La descarga ocupa unos 500 MiB.
+   https://github.com/rexxsalvar/mythos-dwes/archive/refs/heads/codex/mudanza-2026-11-24.zip
+
+   En el Explorador de Windows, haz clic derecho sobre el ZIP y elige
+   "Extraer todo". Abre la carpeta extraída que contiene restaurar.ps1,
+   manifest.json y los archivos .part001 a .part016. Déjalos juntos.
+
+   Si prefieres descargarlo con Git, abre PowerShell y ejecuta estas líneas.
+
+   git clone --depth 1 --single-branch --branch codex/mudanza-2026-11-24 https://github.com/rexxsalvar/mythos-dwes.git Mythos-Respaldo
    cd Mythos-Respaldo
 
-2. Ejecuta la restauracion con una carpeta de destino nueva o vacia.
+   La rama del respaldo y el código de trabajo están aquí.
+   https://github.com/rexxsalvar/mythos-dwes/tree/codex/mudanza-2026-11-24
+   https://github.com/rexxsalvar/mythos-dwes/tree/main
 
-   powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\restaurar.ps1 -Destino "C:\Proyectos\Mythos"
+3. RESTAURA EL PROYECTO
 
-   Si GPG esta en otra ubicacion, anade al comando, por ejemplo,
-   -GpgPath "C:\Program Files\Git\usr\bin\gpg.exe"
+   Si descargaste el ZIP, abre en el Explorador la carpeta que contiene
+   restaurar.ps1, escribe "powershell" en la barra de direcciones y pulsa
+   Intro. Si usaste Git, continúa en la misma ventana de PowerShell.
 
-3. Escribe la contrasena del respaldo cuando se solicite. Se entrega por el
-   chat o se guarda en un archivo local aparte. Conserva esa clave fuera de Git.
-   La entrada de la contrasena queda oculta. El script comprueba los hashes
-   de las partes, del archivo reconstruido y del ZIP antes de extraerlo.
+   Copia y ejecuta esta línea.
 
-4. Abre la carpeta restaurada en PhpStorm. Contiene el proyecto, su historial
-   .git, .env, la base de datos SQLite, dependencias y recursos del momento
-   de la copia. Conserva juntos ese APP_KEY y esa base de datos.
+   powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\restaurar.ps1 -Destino "$env:USERPROFILE\Proyectos\Mythos"
 
-5. Desde la carpeta restaurada ejecuta estos comandos.
+   La opción ExecutionPolicy afecta solo a ese proceso de PowerShell.
+   La carpeta de destino debe ser nueva o estar vacía.
 
+   Introduce la clave del respaldo cuando el programa la solicite. La entrada
+   está oculta. Espera a que aparezca el mensaje "Proyecto restaurado en..."
+   antes de cerrar PowerShell. El programa verifica los fragmentos, descifra
+   la copia y recupera el proyecto con su historial, .env y SQLite.
+
+4. ABRE LA WEB
+
+   Con PHP 8.4 activo, ejecuta estas líneas en PowerShell, una por una.
+
+   Set-Location -LiteralPath "$env:USERPROFILE\Proyectos\Mythos"
    php artisan view:clear
    php artisan serve --host=127.0.0.1 --port=8030
 
-   Abre http://127.0.0.1:8030 en el navegador. Para seguir editando los recursos
-   de interfaz, abre otra terminal en la misma carpeta y ejecuta npm run dev.
+   Mantén esa terminal abierta y visita http://127.0.0.1:8030. Para editar el
+   proyecto en PhpStorm, abre la carpeta Proyectos\Mythos de tu usuario.
+   La carpeta Proyectos\Mythos es la que se usa para trabajar y hacer commits.
 
-La copia conserva el estado de la aplicacion. Evita composer setup,
-php artisan key:generate y php artisan migrate:fresh durante esta restauracion.
+   Los recursos de la web ya están compilados. Para cambiar CSS o JavaScript
+   puedes ejecutar "npm run dev" en otra terminal desde la carpeta Mythos.
+   Si necesitas reinstalar los paquetes, usa "composer install" para PHP
+   y "npm ci" seguido de "npm run build" para los recursos de la web.
 
-Si una extraccion se interrumpe, el script conserva los archivos que haya
-extraido. Para reintentar usa otra carpeta nueva o vacia.
+   Conserva juntos el .env original y database\database.sqlite. Durante esta
+   restauración omite "composer setup", "php artisan key:generate" y
+   "php artisan migrate:fresh" para preservar la clave y los datos.
+
+SI ALGO FALLA
+
+   Falta GPG. Revisa la instalación de Git para Windows. Si instalaste GPG en
+   otra ruta, añade al comando del paso 3 -GpgPath "C:\ruta\gpg.exe".
+
+   Falta un fragmento o no coincide su SHA256. Vuelve a descargar el ZIP
+   completo y extráelo en otra carpeta.
+
+   Error de clave. Pide la clave del respaldo del 24 de noviembre y pégala
+   sin espacios adicionales cuando el restaurador la solicite.
+
+   La restauración se ha interrumpido. Repite el paso 3 con una carpeta
+   nueva o vacía. Si cambias el destino, usa esa misma ruta en el paso 4.
+
+   El puerto 8030 está ocupado. Cambia --port=8030 por --port=8031 y visita
+   http://127.0.0.1:8031.
+
+   Antes de borrar la copia del PC anterior, verifica que la web abre y que
+   puedes ver tus datos en el nuevo PC.
